@@ -2,13 +2,18 @@
   "name": "md-free-angular-cli",
   "version": "1.4.2",
   "license": "MIT",
+  "main": "app.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "gitbuild": "ng build --prod --base /vampiremix/CoffeeHub_Admin/master/dist/",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "node app.js"
+  }, "engines": {
+    "node": "6.10.3",
+    "npm": "3.10.10"
   },
   "private": true,
   "dependencies": {
