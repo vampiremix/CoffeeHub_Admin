@@ -11,7 +11,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start": "node app.js"
-  }, "engines": {
+  },
+  "engines": {
     "node": "6.10.3",
     "npm": "3.10.10"
   },
@@ -34,6 +35,7 @@
     "chartist": "0.11.0",
     "classlist.js": "^1.1.20150312",
     "core-js": "2.4.1",
+    "express": "^4.16.2",
     "googleapis": "19.0.0",
     "jquery": "3.2.1",
     "moment": "2.18.1",
