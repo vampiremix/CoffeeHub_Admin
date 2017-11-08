@@ -1,17 +1,21 @@
-.scrooll{
+.scrooll {
     height: 750px;
     overflow-y: scroll;
 }
 
-.navbar-form .form-control{
+.navbar-form .form-control {
     width: 300px;
 }
 
-.user{
+.user {
     padding-right: 20px;
     padding-left: 20px;
-    
 }
-.name{
+
+.name {
     margin-top: 20px;
+}
+
+.align-center {
+    padding-left: 3em;
 }
