@@ -11,9 +11,11 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+import { ShopListComponent } from 'app/shop-list/shop-list.component';
 
 const routes: Routes =[
     { path: 'dashboard',      component: DashboardComponent },
+    { path: 'shop-list',      component: ShopListComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
