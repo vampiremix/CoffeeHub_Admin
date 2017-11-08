@@ -1,3 +1,219 @@
-<p>
-  shop-list works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <form class="navbar-form " role="search">
+              <div class="form-group form-black is-empty">
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="material-input"></span>
+              </div>
+              <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                <i class="material-icons">search</i>
+                <div class="ripple-container"></div>
+              </button>
+            </form>
+          </div>
+          <!-- list Data-->
+          <div class="scrollbar">
+            <div class="card-content" *ngFor="let index of [0,1,2,3,4,5,6,7,8,9,10]">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-xs-3 col-md-3">
+
+                      <img src="http://www.smeleader.com/wp-content/uploads/2015/01/%E0%B8%A3%E0%B8%A7%E0%B8%A1-7-%E0%B9%81%E0%B8%9F%E0%B8%A3%E0%B8%99%E0%B9%84%E0%B8%8A%E0%B8%AA%E0%B9%8C-%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B9%81%E0%B8%9F%E0%B8%AA%E0%B8%94-%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AD%E0%B8%B2%E0%B8%8A%E0%B8%B5%E0%B8%9E%E0%B8%A2%E0%B8%AD%E0%B8%94%E0%B8%99%E0%B8%B4%E0%B8%A2%E0%B8%A1-5.jpg"
+                        alt="...">
+
+                    </div>
+                    <div class="col-md-6">
+                      ชื่อร้าน ละมุนภัณฑ์
+                      <br> คุณB AAAAA (087-0000000)
+                      <br>
+                      <i class="glyphicon glyphicon-envelope"></i> : lamunpan@gmail.com
+                      <br>
+                      <i class="glyphicon glyphicon-earphone"></i> : 02-0000000
+                      <br>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12" id="edit">
+                      <button type="submit" class="btn btn-white btn-round btn-just-icon bg-edit" id="bg-edit">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        <div class="ripple-container"></div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- /////////////////////////////////////////////////////// -->
+
+
+
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header" data-background-color="red">
+              แก้ไข : ร้านละมุนภัณฑ์
+            </div>
+            <!-- list Data-->
+
+            <div class="card-content">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group form-black label-stacked is-empty">
+                    <label class="control-label">ชื่อร้านค้า</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group form-black label-stacked is-empty">
+                    <label class="control-label">Shop Code</label>
+                    <input type="number" class="form-control" disabled>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="form-group form-black label-stacked is-empty">
+                    <label class="control-label">เบอร์โทรร้านค้า</label>
+                    <input type="tel" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="form-group form-black label-stacked is-empty">
+                    <label class="control-label">E-mail ร้านค้า</label>
+                    <input type="email" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+
+                    <label>เวลาเปิด-ปิด</label>
+                    <div class="sub">
+                      <br>
+                      <label>เวลาเปิดร้าน :</label>
+                      <input type="time">
+                      <br>
+                      <label>เวลาปิดร้าน :</label>
+                      <input type="time">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>ที่อยู่</label>
+                    <div class="sub">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="form-group form-black label-stacked is-empty">
+                            <label class="control-label">ที่อยู่</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group form-black label-stacked is-empty">
+                            <label class="control-label">รหัสไปรษณีย์</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group form-black label-stacked is-empty">
+                            <label class="control-label">ตำบล</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group form-black label-stacked is-empty">
+                            <label class="control-label">อำเภอ</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group form-black label-stacked is-empty">
+                            <label class="control-label">จังหวัด</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-5">
+                          <div class="form-group form-black label-stacked is-empty">
+                            <label class="control-label">ละติจูด</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="form-group form-black label-stacked is-empty">
+                            <label class="control-label">ลองติจูด</label>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Social</label>
+                    <div class="sub">
+                      <div class="form-group form-black label-stacked is-empty">
+                        <label class="control-label">Facebook</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group form-black label-stacked is-empty">
+                        <label class="control-label">Instagrag</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group form-black label-stacked is-empty">
+                        <label class="control-label">Line</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button class="btn btn-default" type="submit">
+                  <i class="material-icons">insert_photo</i>อัพโหลดรูป โลโก้</button>
+                <input type="file" id="exampleInputFile">
+              </div>
+              <div class="form-group">
+                <button class="btn btn-default" type="submit">
+                  <i class="material-icons">insert_photo</i>อัพโหลดรูป ร้านค้า</button>
+                <input type="file" id="exampleInputFile">
+                <p class="help-block">Example block-level help text here.</p>
+              </div>
+
+
+              <button type="submit" class="btn btn-danger pull-right">Update</button>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
