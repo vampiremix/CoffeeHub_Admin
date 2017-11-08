@@ -1,3 +1,4 @@
+import { UserComponent } from './user/user.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
@@ -16,6 +17,7 @@ import { ShopListComponent } from 'app/shop-list/shop-list.component';
 const routes: Routes =[
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'shop-list',      component: ShopListComponent },
+    { path: 'user',       component: UserComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
