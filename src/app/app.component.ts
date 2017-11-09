@@ -14,6 +14,7 @@ declare const $: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+    user;
     private _router: Subscription;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
