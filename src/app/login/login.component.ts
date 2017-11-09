@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { UsersModel } from 'app/user/user.model';
 
@@ -7,7 +7,9 @@ import { UsersModel } from 'app/user/user.model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
+  @Output() loginUser = new EventEmitter();
   public user;
   auth: { username: '', password: '' };
   constructor(private http: Http) { }
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
           alert("User นี้ ไม่มีสิทธิ์ใช้งาน");
         }else{
           this.user = this.datauser;
+          this.loginUser.emit(this.user);
           window.localStorage.setItem("user", JSON.stringify(this.datauser));
         }
 

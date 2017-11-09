@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="Comuser">
+<div class="wrapper" [hidden]=!Comuser>
     <div class="sidebar" data-color='red' data-image="">
         <app-sidebar></app-sidebar>
         <div class="sidebar-background" style="background-image: url(../assets/img/sidebar-4.jpg)"></div>
@@ -10,10 +10,8 @@
             <app-footer></app-footer>
         </div>
     </div>
-    
 </div>
-{{Comuser}}
-<div class="wrapper" *ngIf="!Comuser">
-    <app-login >
+<div class="wrapper" [hidden]=Comuser>
+    <app-login (loginUser)="getUser($event)" *ngIf="!Comuser">
     </app-login>
 </div>

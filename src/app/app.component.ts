@@ -10,9 +10,9 @@ import { LoginComponent } from 'app/login/login.component';
 declare const $: any;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
     public Comuser;
@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
 
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-    constructor( public location: Location, private router: Router,public loginPage: LoginComponent) {
-this.Comuser = this.loginPage.user;
+    constructor(public location: Location, private router: Router) {
+
     }
 
     ngOnInit() {
@@ -31,25 +31,25 @@ this.Comuser = this.loginPage.user;
         const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
         const elemSidebar = <HTMLElement>document.querySelector('.sidebar .sidebar-wrapper');
 
-        this.location.subscribe((ev:PopStateEvent) => {
+        this.location.subscribe((ev: PopStateEvent) => {
             this.lastPoppedUrl = ev.url;
         });
-         this.router.events.subscribe((event:any) => {
+        this.router.events.subscribe((event: any) => {
             this.navbar.sidebarClose();
             if (event instanceof NavigationStart) {
-               if (event.url != this.lastPoppedUrl)
-                   this.yScrollStack.push(window.scrollY);
-           } else if (event instanceof NavigationEnd) {
-               if (event.url == this.lastPoppedUrl) {
-                   this.lastPoppedUrl = undefined;
-                   window.scrollTo(0, this.yScrollStack.pop());
-               } else
-                   window.scrollTo(0, 0);
-           }
+                if (event.url != this.lastPoppedUrl)
+                    this.yScrollStack.push(window.scrollY);
+            } else if (event instanceof NavigationEnd) {
+                if (event.url == this.lastPoppedUrl) {
+                    this.lastPoppedUrl = undefined;
+                    window.scrollTo(0, this.yScrollStack.pop());
+                } else
+                    window.scrollTo(0, 0);
+            }
         });
         this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
-             elemMainPanel.scrollTop = 0;
-             elemSidebar.scrollTop = 0;
+            elemMainPanel.scrollTop = 0;
+            elemSidebar.scrollTop = 0;
         });
         if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac()) {
             let ps = new PerfectScrollbar(elemMainPanel);
@@ -59,10 +59,10 @@ this.Comuser = this.loginPage.user;
     ngAfterViewInit() {
         this.runOnRouteChange();
     }
-    isMaps(path){
+    isMaps(path) {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-        titlee = titlee.slice( 1 );
-        if(path == titlee){
+        titlee = titlee.slice(1);
+        if (path == titlee) {
             return false;
         }
         else {
@@ -70,11 +70,11 @@ this.Comuser = this.loginPage.user;
         }
     }
     runOnRouteChange(): void {
-      if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac()) {
-        const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
-        const ps = new PerfectScrollbar(elemMainPanel);
-        ps.update();
-      }
+        if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac()) {
+            const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
+            const ps = new PerfectScrollbar(elemMainPanel);
+            ps.update();
+        }
     }
     isMac(): boolean {
         let bool = false;
@@ -82,5 +82,9 @@ this.Comuser = this.loginPage.user;
             bool = true;
         }
         return bool;
+    }
+    getUser($event) {
+        this.Comuser = $event;
+        this.router.navigate(['/dashboard']);
     }
 }
