@@ -19,6 +19,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { ShopListComponent } from './shop-list/shop-list.component';
 import { UserComponent } from './user/user.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -40,8 +42,9 @@ import { UserComponent } from './user/user.component';
     FormsModule,
     HttpModule,
     ComponentsModule,
-RouterModule,
-    AppRoutingModule
+    RouterModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
