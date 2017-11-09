@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { UsersModel } from 'app/user/user.model';
+
 import 'rxjs/add/operator/toPromise';
+
 
 @Component({
   selector: 'app-user',
@@ -19,7 +21,9 @@ export class UserComponent implements OnInit {
   });
 
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, ) {
+
+   }
 
   ngOnInit() {
     let signindata = { username: "amonratCha", password: "P@ssw0rd1234" };

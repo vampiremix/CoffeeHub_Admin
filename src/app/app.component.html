@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="user">
+<div class="wrapper" *ngIf="Comuser">
     <div class="sidebar" data-color='red' data-image="">
         <app-sidebar></app-sidebar>
         <div class="sidebar-background" style="background-image: url(../assets/img/sidebar-4.jpg)"></div>
@@ -10,10 +10,10 @@
             <app-footer></app-footer>
         </div>
     </div>
+    
 </div>
-
-<div class="wrapper">
-    <app-login>
-
+{{Comuser}}
+<div class="wrapper" *ngIf="!Comuser">
+    <app-login >
     </app-login>
 </div>

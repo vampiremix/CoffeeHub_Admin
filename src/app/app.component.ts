@@ -5,6 +5,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
+import { LoginComponent } from 'app/login/login.component';
 
 declare const $: any;
 
@@ -14,14 +15,16 @@ declare const $: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    user;
+    public Comuser;
     private _router: Subscription;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-    constructor( public location: Location, private router: Router) {}
+    constructor( public location: Location, private router: Router,public loginPage: LoginComponent) {
+this.Comuser = this.loginPage.user;
+    }
 
     ngOnInit() {
         $.material.init();
