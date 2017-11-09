@@ -20,6 +20,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 import { ShopListComponent } from './shop-list/shop-list.component';
 import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     UpgradeComponent,
     ShopListComponent,
     UserComponent,
+    LoginComponent,
 
   ],
   imports: [
