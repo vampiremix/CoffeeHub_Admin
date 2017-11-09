@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { RouteService } from 'app/route.service';
+import { ShopsModel } from 'app/shop-list/shop-list.model';
 
 @Component({
   selector: 'app-shop-list',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shop-list.component.css']
 })
 export class ShopListComponent implements OnInit {
-
-  constructor() { }
+  public shoplist: ShopsModel = new ShopsModel;
+  constructor(private http: Http, private route: RouteService) { }
 
   ngOnInit() {
+    this.getShoplist();
   }
 
+
+  getShoplist() {
+    this.http.get(this.route.route).toPromise().then((res) => {
+      this.shoplist = res.json();
+      console.log(this.shoplist);
+    }).catch((err) => {
+      alert("Cannot get shop list : " + JSON.stringify(err));
+    });
+  }
 }
