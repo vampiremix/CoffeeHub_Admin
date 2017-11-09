@@ -21,6 +21,7 @@ import { ShopListComponent } from './shop-list/shop-list.component';
 import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { RouteService } from 'app/route.service';
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginComponent],
+  providers: [LoginComponent,RouteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

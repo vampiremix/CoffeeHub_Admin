@@ -22,7 +22,8 @@ export class ShopListComponent implements OnInit {
       this.shoplist = res.json();
       console.log(this.shoplist);
     }).catch((err) => {
-      alert("Cannot get shop list : " + JSON.stringify(err));
+     console.log("Cannot get shop list :" , err);
+   
     });
   }
 }

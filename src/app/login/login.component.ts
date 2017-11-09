@@ -10,7 +10,8 @@ import { UsersModel } from 'app/user/user.model';
 
 export class LoginComponent implements OnInit {
   @Output() loginUser = new EventEmitter();
-  auth: { username: '', password: '' };
+  username = "admincoffeehub";
+  password = "P@ssw0rd1234"
   datauser: UsersModel;
   constructor(private http: Http) { }
 
