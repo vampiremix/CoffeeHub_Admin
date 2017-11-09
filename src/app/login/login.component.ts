@@ -26,12 +26,12 @@ export class LoginComponent implements OnInit {
       .then(response => {
         this.datauser = response.json() as UsersModel;
         console.log(this.datauser.roles);
-        if (this.datauser.roles[0] !== 'shopowner' || this.datauser.roles[0] !== 'admin'  ) {
-          alert("User นี้ ไม่มีสิทธิ์ใช้งาน");
-        } else {
+        if (this.datauser.roles[0] == 'shopowner' || this.datauser.roles[0] == 'admin'  ) {
           window.localStorage.setItem('token', JSON.stringify(this.datauser.loginToken));
           window.localStorage.setItem("user", JSON.stringify(this.datauser));
           this.loginUser.emit(this.datauser);
+        } else {
+          alert("User นี้ ไม่มีสิทธิ์ใช้งาน");
         }
 
       }).catch((err) => { alert("ERROR Login : " + err) })
