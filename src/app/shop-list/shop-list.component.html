@@ -17,23 +17,23 @@
           </div>
           <!-- list Data-->
           <div class="scrollbar">
-            <div class="card-content" *ngFor="let index of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]">
+            <div class="card-content" *ngFor="let shop of shoplist">
               <div class="panel panel-default">
                 <div class="panel-body">
                   <div class="row">
                     <div class="col-xs-3 col-md-3">
 
-                      <img src="http://www.smeleader.com/wp-content/uploads/2015/01/%E0%B8%A3%E0%B8%A7%E0%B8%A1-7-%E0%B9%81%E0%B8%9F%E0%B8%A3%E0%B8%99%E0%B9%84%E0%B8%8A%E0%B8%AA%E0%B9%8C-%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B9%81%E0%B8%9F%E0%B8%AA%E0%B8%94-%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AD%E0%B8%B2%E0%B8%8A%E0%B8%B5%E0%B8%9E%E0%B8%A2%E0%B8%AD%E0%B8%94%E0%B8%99%E0%B8%B4%E0%B8%A2%E0%B8%A1-5.jpg"
+                      <img [src]="shop.image[0]"
                         alt="...">
 
                     </div>
                     <div class="col-md-9">
-                      ชื่อร้าน ละมุนภัณฑ์ {{index}}
-                      <br> คุณAmonrat Chantawon (087-0000000)
+                      ชื่อร้าน : {{shop.name}} 
+                      <br> เจ้าของร้าน : {{shop.shopowner.displayName}} ({{shop.shopowner.phone}})
                       <br>
-                      <i class="glyphicon glyphicon-envelope"></i> : lamunpan@gmail.com
+                      <i class="glyphicon glyphicon-envelope"></i> : {{shop.email}}
                       <br>
-                      <i class="glyphicon glyphicon-earphone"></i> : 02-0000000
+                      <i class="glyphicon glyphicon-earphone"></i> : {{shop.phone}}
                       <br>
                     </div>
                   </div>

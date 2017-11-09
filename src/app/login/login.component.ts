@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       .then(response => {
         this.datauser = response.json() as UsersModel;
         console.log(this.datauser.roles);
-        if (this.datauser.roles[0] !== 'shopowner') {
+        if (this.datauser.roles[0] !== 'shopowner' || this.datauser.roles[0] !== 'admin'  ) {
           alert("User นี้ ไม่มีสิทธิ์ใช้งาน");
         } else {
           window.localStorage.setItem('token', JSON.stringify(this.datauser.loginToken));

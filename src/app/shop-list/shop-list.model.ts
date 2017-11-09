@@ -18,6 +18,22 @@ export class ShopsModel {
         lng: string;
     }
     created: Date;
-    user: UsersModel;
     logo: string;
+    shopowner: string;
+    openinghours: {
+        open: Date;
+        close: Date;
+    }
+    facebook: string;
+    instagram: string;
+    line: string;
+    parking: Array<string>;
+    favorite: Array<UsersModel>;
+    image: Array<string>;
+    createduser: UsersModel;
+    editlog: Array<createUserModel>
+}
+export class createUserModel {
+    user: UsersModel;
+    date: Date;
 }

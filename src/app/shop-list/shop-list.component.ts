@@ -16,7 +16,6 @@ export class ShopListComponent implements OnInit {
     this.getShoplist();
   }
 
-
   getShoplist() {
     this.http.get(this.route.route + 'api/shops/').toPromise().then((res) => {
       this.shoplist = res.json();
