@@ -31,7 +31,8 @@ export class UserComponent implements OnInit {
   }
 
   getShoplist() {
-    this.http.get(this.route.route + 'api/users/').toPromise().then((res) => {
+ let head = 
+    this.http.get(this.route.route + 'api/users/', this.optionsURL).toPromise().then((res) => {
       this.userData = res.json();
       console.log(this.userData);
     }).catch((err) => {

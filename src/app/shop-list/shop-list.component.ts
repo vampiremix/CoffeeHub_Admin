@@ -9,7 +9,8 @@ import { ShopsModel } from 'app/shop-list/shop-list.model';
   styleUrls: ['./shop-list.component.css']
 })
 export class ShopListComponent implements OnInit {
-  public shoplist: ShopsModel = new ShopsModel;
+  public shoplist: Array<ShopsModel> = new Array<ShopsModel>();
+  public editing: Array<ShopsModel> = new Array<ShopsModel>();
   constructor(private http: Http, private route: RouteService) { }
 
   ngOnInit() {
@@ -21,8 +22,13 @@ export class ShopListComponent implements OnInit {
       this.shoplist = res.json();
       console.log(this.shoplist);
     }).catch((err) => {
-     console.log("Cannot get shop list :" , err);
-   
+      console.log("Cannot get shop list :", err);
+
     });
+  }
+
+  editshop(shop) {
+    this.editing = shop;
+    console.log("shop edit : " , this.editing);
   }
 }

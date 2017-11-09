@@ -4,6 +4,7 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-header" data-background-color="red">
+            <h4>รายการ ร้านกาแฟ</h4>
             <form class="navbar-form " role="search">
               <div class="form-group form-black is-empty">
                 <input type="text" class="form-control" placeholder="Search">
@@ -23,12 +24,11 @@
                   <div class="row">
                     <div class="col-xs-3 col-md-3">
 
-                      <img [src]="shop.image[0]"
-                        alt="...">
+                      <img [src]="shop.image[0]" alt="...">
 
                     </div>
                     <div class="col-md-9">
-                      ชื่อร้าน : {{shop.name}} 
+                      ชื่อร้าน : {{shop.name}}
                       <br> เจ้าของร้าน : {{shop.shopowner.displayName}} ({{shop.shopowner.phone}})
                       <br>
                       <i class="glyphicon glyphicon-envelope"></i> : {{shop.email}}
@@ -39,7 +39,7 @@
                   </div>
                   <div class="row">
                     <div class="col-md-12" id="edit">
-                      <button type="submit" class="btn btn-white btn-round btn-just-icon bg-edit" id="bg-edit">
+                      <button type="submit" (click)="editshop(shop)" class="btn btn-white btn-round btn-just-icon bg-edit" id="bg-edit">
                         <i class="glyphicon glyphicon-pencil"></i>
                         <div class="ripple-container"></div>
                       </button>
@@ -56,164 +56,166 @@
 
 
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header" data-background-color="red">
-              แก้ไข : ร้านละมุนภัณฑ์
+
+      <div class="col-md-6" >
+        <div class="card" *ngIf="editing.name">
+          <div class="card-header" data-background-color="red">
+            <h4>แก้ไขข้อมูลร้าน : {{editing.name}}</h4>
+          </div>
+          <!-- list Data-->
+
+          <div class="card-content">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group form-black label-stacked is-empty">
+                  <label class="control-label">ชื่อร้านค้า</label>
+                  <input type="text" class="form-control" value="{{editing.name}}">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group form-black label-stacked is-empty">
+                  <label class="control-label">Shop Code</label>
+                  <input type="number" class="form-control" disabled value="{{editing.name}}">
+                </div>
+              </div>
             </div>
-            <!-- list Data-->
 
-            <div class="card-content">
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">ชื่อร้านค้า</label>
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">Shop Code</label>
-                    <input type="number" class="form-control" disabled>
-                  </div>
+            <div class="row">
+              <div class="col-md-7">
+                <div class="form-group form-black label-stacked is-empty">
+                  <label class="control-label">เบอร์โทรร้านค้า</label>
+                  <input type="tel" class="form-control" value="{{editing.phone}}">
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-md-7">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">เบอร์โทรร้านค้า</label>
-                    <input type="tel" class="form-control">
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-9">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">E-mail ร้านค้า</label>
-                    <input type="email" class="form-control">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-
-                    <label>เวลาเปิด-ปิด</label>
-                    <div class="sub">
-                      <br>
-                      <label>เวลาเปิดร้าน :</label>
-                      <input type="time">
-                      <br>
-                      <label>เวลาปิดร้าน :</label>
-                      <input type="time">
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>ที่อยู่</label>
-                    <div class="sub">
-                      <div class="row">
-                        <div class="col-md-7">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">ที่อยู่</label>
-                            <input type="text" class="form-control">
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">รหัสไปรษณีย์</label>
-                            <input type="text" class="form-control">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">ตำบล</label>
-                            <input type="text" class="form-control">
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">อำเภอ</label>
-                            <input type="text" class="form-control">
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">จังหวัด</label>
-                            <input type="text" class="form-control">
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-5">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">ละติจูด</label>
-                            <input type="text" class="form-control">
-                          </div>
-                        </div>
-                        <div class="col-md-5">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">ลองติจูด</label>
-                            <input type="text" class="form-control">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Social</label>
-                    <div class="sub">
-                      <div class="form-group form-black label-stacked is-empty">
-                        <label class="control-label">Facebook</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      <div class="form-group form-black label-stacked is-empty">
-                        <label class="control-label">Instagrag</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      <div class="form-group form-black label-stacked is-empty">
-                        <label class="control-label">Line</label>
-                        <input type="text" class="form-control">
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <button class="btn btn-default" type="submit">
-                  <i class="material-icons">insert_photo</i>อัพโหลดรูป โลโก้</button>
-                <input type="file" id="exampleInputFile">
-              </div>
-              <div class="form-group">
-                <button class="btn btn-default" type="submit">
-                  <i class="material-icons">insert_photo</i>อัพโหลดรูป ร้านค้า</button>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Example block-level help text here.</p>
-              </div>
-
-
-              <button type="submit" class="btn btn-danger pull-right">Update</button>
-              <div class="clearfix"></div>
             </div>
+
+            <div class="row">
+              <div class="col-md-9">
+                <div class="form-group form-black label-stacked is-empty">
+                  <label class="control-label">E-mail ร้านค้า</label>
+                  <input type="email" class="form-control" value="{{editing.email}}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+
+                  <label>เวลาเปิด-ปิด</label>
+                  <div class="sub">
+                    <br>
+                    <label>เวลาเปิดร้าน :</label>
+                    <input type="time">
+                    <br>
+                    <label>เวลาปิดร้าน :</label>
+                    <input type="time">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>ที่อยู่</label>
+                  <div class="sub">
+                    <div class="row">
+                      <div class="col-md-7">
+                        <div class="form-group form-black label-stacked is-empty">
+                          <label class="control-label">ที่อยู่</label>
+                          <input type="text" class="form-control" value="{{editing.address.address}}">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group form-black label-stacked is-empty">
+                          <label class="control-label">รหัสไปรษณีย์</label>
+                          <input type="text" class="form-control" value="{{editing.address.postcode}}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group form-black label-stacked is-empty">
+                          <label class="control-label">ตำบล</label>
+                          <input type="text" class="form-control" value="{{editing.address.subdistrict}}">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group form-black label-stacked is-empty">
+                          <label class="control-label">อำเภอ</label>
+                          <input type="text" class="form-control" value="{{editing.address.district}}">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group form-black label-stacked is-empty">
+                          <label class="control-label">จังหวัด</label>
+                          <input type="text" class="form-control" value="{{editing.address.province}}">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group form-black label-stacked is-empty">
+                          <label class="control-label">ละติจูด</label>
+                          <input type="text" class="form-control" value="{{editing.location.lat}}">
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="form-group form-black label-stacked is-empty">
+                          <label class="control-label">ลองติจูด</label>
+                          <input type="text" class="form-control" value="{{editing.location.lng}}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Social</label>
+                  <div class="sub">
+                    <div class="form-group form-black label-stacked is-empty">
+                      <label class="control-label">Facebook</label>
+                      <input type="text" class="form-control" value="{{editing.facebook}}">
+                    </div>
+                    <div class="form-group form-black label-stacked is-empty">
+                      <label class="control-label">Instagram</label>
+                      <input type="text" class="form-control" value="{{editing.instagram}}">
+                    </div>
+                    <div class="form-group form-black label-stacked is-empty">
+                      <label class="control-label">Line</label>
+                      <input type="text" class="form-control" value="{{editing.line}}">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-default" type="submit">
+                <i class="material-icons">insert_photo</i>อัพโหลดรูป โลโก้</button>
+              <input type="file" id="exampleInputFile">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-default" type="submit">
+                <i class="material-icons">insert_photo</i>อัพโหลดรูป ร้านค้า</button>
+              <input type="file" id="exampleInputFile">
+              <p class="help-block">Example block-level help text here.</p>
+            </div>
+
+
+            <button type="submit" class="btn btn-danger pull-right">Update</button>
+            <div class="clearfix"></div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
