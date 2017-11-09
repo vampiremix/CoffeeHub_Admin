@@ -13,7 +13,6 @@ export class UserComponent implements OnInit {
     'Content-Type': 'application/json'
   });
 
-<<<<<<< HEAD
   optionsURL = new RequestOptions({
     headers: this.headers
   });
@@ -29,14 +28,6 @@ export class UserComponent implements OnInit {
       })
     });
    
-=======
-  constructor(private http: HttpClient) { }
-
-  ngOnInit(): void {
-    this.http.get('https://coffeehubserver.herokuapp.com/api/users').subscribe(data => {
-      alert(JSON.stringify(data));
-    });
->>>>>>> c8842df361b2972f6b151fbe7eea5ce7fd774e28
   }
 
 }
