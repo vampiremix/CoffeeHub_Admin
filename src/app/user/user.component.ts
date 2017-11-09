@@ -1,3 +1,4 @@
+import { RouteService } from '../route.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
@@ -19,33 +20,23 @@ export class UserComponent implements OnInit {
   optionsURL = new RequestOptions({
     headers: this.headers
   });
+  userData: UsersModel = new UsersModel();
 
-
-  constructor(private http: Http, ) {
-
-   }
-
-  ngOnInit() {
-    let signindata = { username: "amonratCha", password: "P@ssw0rd1234" };
-
-
-    this.http.post('https://coffeehubserver.herokuapp.com/api/auth/signin', signindata).toPromise()
-      .then(response => {
-        this.datauser = response.json() as UsersModel;
-        console.log(this.datauser);
-        let ss = { name: "test" };
-        let headers = new Headers();
-        headers.append("Authorization", "Bearer " + this.datauser.loginToken);
-        this.http.post('https://coffeehubserver.herokuapp.com/api/favorites/', ss, { headers: headers }).subscribe(data2 => {
-          console.log("Shop response : ", data2);
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-
+  constructor(private http: Http, private route: RouteService) {
 
   }
 
+  ngOnInit() {
+    this.getShoplist();
+  }
+
+  getShoplist() {
+    this.http.get(this.route.route + 'api/users/').toPromise().then((res) => {
+      this.userData = res.json();
+      console.log(this.userData);
+    }).catch((err) => {
+      console.log("Cannot get shop list :", err);
+
+    });
+  }
 }
