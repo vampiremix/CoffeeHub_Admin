@@ -14,10 +14,7 @@ export class ShopsModel {
     created: Date;
     logo: string;
     shopowner: string;
-    openinghours: {
-        open: Date;
-        close: Date;
-    }
+    openinghours: openTimeModel;
     facebook: string;
     instagram: string;
     line: string;

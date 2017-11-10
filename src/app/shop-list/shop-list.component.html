@@ -84,7 +84,7 @@
               <div class="col-md-7">
                 <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">เบอร์โทรร้านค้า</label>
-                  <input type="tel" class="form-control" value="shop.phone" [(ngModel)]="editing.phone">
+                  <input type="tel" class="form-control" [(ngModel)]="editing.phone">
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@
               <div class="col-md-9">
                 <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">E-mail ร้านค้า</label>
-                  <input type="email" class="form-control" value="shop.email" [(ngModel)]="editing.email">
+                  <input type="email" class="form-control" [(ngModel)]="editing.email">
                 </div>
               </div>
             </div>
@@ -105,10 +105,10 @@
                   <div class="sub">
                     <br>
                     <label>เวลาเปิดร้าน :</label>
-                    <input type="time" >
+                    <input type="time" [(ngModel)]="editing.openinghours.open">
                     <br>
                     <label>เวลาปิดร้าน :</label>
-                    <input type="time" >
+                    <input type="time" [(ngModel)]="editing.openinghours.close">
                   </div>
                 </div>
               </div>
@@ -123,13 +123,13 @@
                       <div class="col-md-7">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">ที่อยู่</label>
-                          <input type="text" class="form-control" value="{{editing.address.address}}" [(ngModel)]="binding.address.address">
+                          <input type="text" class="form-control"  [(ngModel)]="editing.address.address">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">รหัสไปรษณีย์</label>
-                          <input type="text" class="form-control" value="{{shop.address.postcode}}" [(ngModel)]="editing.address.postcode">
+                          <input type="text" class="form-control"  [(ngModel)]="editing.address.postcode">
                         </div>
                       </div>
                     </div>
@@ -137,19 +137,19 @@
                       <div class="col-md-4">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">ตำบล</label>
-                          <input type="text" class="form-control" value="{{shop.address.subdistrict}}" [(ngModel)]="editing.address.subdistrict">
+                          <input type="text" class="form-control" [(ngModel)]="editing.address.subdistrict">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">อำเภอ</label>
-                          <input type="text" class="form-control" value="{{shop.address.district}}" [(ngModel)]="editing.address.district">
+                          <input type="text" class="form-control"  [(ngModel)]="editing.address.district">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">จังหวัด</label>
-                          <input type="text" class="form-control" value="{{shop.address.province}}" [(ngModel)]="editing.address.province">
+                          <input type="text" class="form-control"  [(ngModel)]="editing.address.province">
                         </div>
                       </div>
                     </div>
@@ -158,13 +158,13 @@
                       <div class="col-md-5">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">ละติจูด</label>
-                          <input type="text" class="form-control" value="{{shop.location.lat}}" [(ngModel)]="editing.location.lat">
+                          <input type="text" class="form-control" [(ngModel)]="editing.location.lat">
                         </div>
                       </div>
                       <div class="col-md-5">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">ลองติจูด</label>
-                          <input type="text" class="form-control" value="{{shop.location.lng}}" [(ngModel)]="editing.location.lng">
+                          <input type="text" class="form-control"  [(ngModel)]="editing.location.lng">
                         </div>
                       </div>
                     </div>
@@ -182,15 +182,15 @@
                   <div class="sub">
                     <div class="form-group form-black label-stacked is-empty">
                       <label class="control-label">Facebook</label>
-                      <input type="text" class="form-control" value="{{shop.facebook}}" [(ngModel)]="editing.facebook">
+                      <input type="text" class="form-control"  [(ngModel)]="editing.facebook">
                     </div>
                     <div class="form-group form-black label-stacked is-empty">
                       <label class="control-label">Instagram</label>
-                      <input type="text" class="form-control" value="{{shop.instagram}}" [(ngModel)]="editing.instagram">
+                      <input type="text" class="form-control" [(ngModel)]="editing.instagram">
                     </div>
                     <div class="form-group form-black label-stacked is-empty">
                       <label class="control-label">Line</label>
-                      <input type="text" class="form-control" value="{{shop.line}}" [(ngModel)]="editing.line">
+                      <input type="text" class="form-control" [(ngModel)]="editing.line">
                     </div>
                   </div>
 
