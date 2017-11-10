@@ -4,7 +4,10 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-header" data-background-color="red">
-            <h4>รายการ ร้านกาแฟ</h4>
+            <h4>รายการ ร้านกาแฟ  <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="addShop()">
+              <i class="material-icons">add</i>
+            </button></h4>
+           
             <form class="navbar-form " role="search">
               <div class="form-group form-black is-empty">
                 <input type="text" class="form-control" placeholder="Search">
@@ -15,6 +18,7 @@
                 <div class="ripple-container"></div>
               </button>
             </form>
+          
           </div>
           <!-- list Data-->
           <div class="scrollbar">
@@ -68,7 +72,7 @@
             <div class="row">
               <div class="col-md-8">
                 <div class="form-group form-black label-stacked is-empty">
-                  <label class="control-label">ชื่อร้านค้า</label>
+                  <label class="control-label">ชื่อร้าน</label>
                   <input type="text" class="form-control" [(ngModel)]="editing.name">
                 </div>
               </div>
@@ -215,24 +219,24 @@
             <div class="clearfix"></div>
           </div>
         </div>
-        <!-- <div class="card" *ngIf="isEdit">
+        <div class="card" *ngIf="isAdd">
           <div class="card-header" data-background-color="red">
-            <h4>แก้ไขข้อมูลร้าน : {{edittitle}} ({{shopcode}})</h4>
+            <h4>สร้างข้อมูลร้านกาแฟ</h4>
           </div>
-        
+          <!-- list Data-->
 
           <div class="card-content">
             <div class="row">
               <div class="col-md-8">
                 <div class="form-group form-black label-stacked is-empty">
-                  <label class="control-label">ชื่อร้านค้า</label>
-                  <input type="text" class="form-control" value="shop.name" [(ngModel)]="editing.name">
+                  <label class="control-label">ชื่อร้าน</label>
+                  <input type="text" class="form-control" [(ngModel)]="editing.name">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">Shop Code</label>
-                  <input type="text" class="form-control" disabled value="{{shopcode}}">
+                  <input type="text" class="form-control" disabled [(ngModel)]="shopcode">
                 </div>
               </div>
             </div>
@@ -241,7 +245,7 @@
               <div class="col-md-7">
                 <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">เบอร์โทรร้านค้า</label>
-                  <input type="tel" class="form-control" value="shop.phone" [(ngModel)]="editing.phone">
+                  <input type="tel" class="form-control" [(ngModel)]="editing.phone">
                 </div>
               </div>
             </div>
@@ -250,7 +254,7 @@
               <div class="col-md-9">
                 <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">E-mail ร้านค้า</label>
-                  <input type="email" class="form-control" value="shop.email" [(ngModel)]="editing.email">
+                  <input type="email" class="form-control" [(ngModel)]="editing.email">
                 </div>
               </div>
             </div>
@@ -262,10 +266,10 @@
                   <div class="sub">
                     <br>
                     <label>เวลาเปิดร้าน :</label>
-                    <input type="time" value="{{bindingData.openinghours.close}}">
+                    <input type="time" [(ngModel)]="editing.openinghours.open">
                     <br>
                     <label>เวลาปิดร้าน :</label>
-                    <input type="time" value="{{bindingData.openinghours.close}}" [(ngModel)]="editing.openinghours.close">
+                    <input type="time" [(ngModel)]="editing.openinghours.close">
                   </div>
                 </div>
               </div>
@@ -280,13 +284,13 @@
                       <div class="col-md-7">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">ที่อยู่</label>
-                          <input type="text" class="form-control" value="{{shop.address.address}}" [(ngModel)]="editing.address.address">
+                          <input type="text" class="form-control"  [(ngModel)]="editing.address.address">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">รหัสไปรษณีย์</label>
-                          <input type="text" class="form-control" value="{{shop.address.postcode}}" [(ngModel)]="editing.address.postcode">
+                          <input type="text" class="form-control"  [(ngModel)]="editing.address.postcode">
                         </div>
                       </div>
                     </div>
@@ -294,19 +298,19 @@
                       <div class="col-md-4">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">ตำบล</label>
-                          <input type="text" class="form-control" value="{{shop.address.subdistrict}}" [(ngModel)]="editing.address.subdistrict">
+                          <input type="text" class="form-control" [(ngModel)]="editing.address.subdistrict">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">อำเภอ</label>
-                          <input type="text" class="form-control" value="{{shop.address.district}}" [(ngModel)]="editing.address.district">
+                          <input type="text" class="form-control"  [(ngModel)]="editing.address.district">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">จังหวัด</label>
-                          <input type="text" class="form-control" value="{{shop.address.province}}" [(ngModel)]="editing.address.province">
+                          <input type="text" class="form-control"  [(ngModel)]="editing.address.province">
                         </div>
                       </div>
                     </div>
@@ -315,13 +319,13 @@
                       <div class="col-md-5">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">ละติจูด</label>
-                          <input type="text" class="form-control" value="{{shop.location.lat}}" [(ngModel)]="editing.location.lat">
+                          <input type="text" class="form-control" [(ngModel)]="editing.location.lat">
                         </div>
                       </div>
                       <div class="col-md-5">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">ลองติจูด</label>
-                          <input type="text" class="form-control" value="{{shop.location.lng}}" [(ngModel)]="editing.location.lng">
+                          <input type="text" class="form-control"  [(ngModel)]="editing.location.lng">
                         </div>
                       </div>
                     </div>
@@ -339,15 +343,15 @@
                   <div class="sub">
                     <div class="form-group form-black label-stacked is-empty">
                       <label class="control-label">Facebook</label>
-                      <input type="text" class="form-control" value="{{shop.facebook}}" [(ngModel)]="editing.facebook">
+                      <input type="text" class="form-control"  [(ngModel)]="editing.facebook">
                     </div>
                     <div class="form-group form-black label-stacked is-empty">
                       <label class="control-label">Instagram</label>
-                      <input type="text" class="form-control" value="{{shop.instagram}}" [(ngModel)]="editing.instagram">
+                      <input type="text" class="form-control" [(ngModel)]="editing.instagram">
                     </div>
                     <div class="form-group form-black label-stacked is-empty">
                       <label class="control-label">Line</label>
-                      <input type="text" class="form-control" value="{{shop.line}}" [(ngModel)]="editing.line">
+                      <input type="text" class="form-control" [(ngModel)]="editing.line">
                     </div>
                   </div>
 
@@ -371,7 +375,7 @@
             <button type="submit" class="btn btn-danger pull-right" (click)="updateData(editing)">Update</button>
             <div class="clearfix"></div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>

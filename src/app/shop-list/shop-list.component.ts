@@ -46,10 +46,12 @@ export class ShopListComponent implements OnInit {
   updateData(data) {
     let token = this.route.createAuthorizationHeader();
     let user = JSON.parse(window.localStorage.getItem("user"));
-    data.editlog = user._id;
+    data.editlog.user = user._id;
     this.http.put(this.route.route + 'api/shops/' + data._id, data, { headers: token }).toPromise().then((res) => {
       // this.shoplist = res.json();
       this.getShoplist();
+      this.editing = null;
+      this.isEdit = false;
       console.log(this.shoplist);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);
