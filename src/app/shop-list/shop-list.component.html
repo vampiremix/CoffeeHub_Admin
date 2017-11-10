@@ -69,13 +69,13 @@
               <div class="col-md-8">
                 <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">ชื่อร้านค้า</label>
-                  <input type="text" class="form-control" value="shop.name" [(ngModel)]="editing.name" >
+                  <input type="text" class="form-control" [(ngModel)]="editing.name">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">Shop Code</label>
-                  <input type="text" class="form-control" disabled value="{{shopcode}}">
+                  <input type="text" class="form-control" disabled [(ngModel)]="shopcode">
                 </div>
               </div>
             </div>
@@ -105,10 +105,10 @@
                   <div class="sub">
                     <br>
                     <label>เวลาเปิดร้าน :</label>
-                    <input type="time" value="{{bindingData.openinghours.close}}" >
+                    <input type="time" >
                     <br>
                     <label>เวลาปิดร้าน :</label>
-                    <input type="time" value="{{bindingData.openinghours.close}}" [(ngModel)]="editing.openinghours.close">
+                    <input type="time" >
                   </div>
                 </div>
               </div>
@@ -123,7 +123,7 @@
                       <div class="col-md-7">
                         <div class="form-group form-black label-stacked is-empty">
                           <label class="control-label">ที่อยู่</label>
-                          <input type="text" class="form-control" value="{{shop.address.address}}" [(ngModel)]="editing.address.address">
+                          <input type="text" class="form-control" value="{{editing.address.address}}" [(ngModel)]="binding.address.address">
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -215,18 +215,18 @@
             <div class="clearfix"></div>
           </div>
         </div>
-          <div class="card" *ngIf="isEdit">
+        <!-- <div class="card" *ngIf="isEdit">
           <div class="card-header" data-background-color="red">
             <h4>แก้ไขข้อมูลร้าน : {{edittitle}} ({{shopcode}})</h4>
           </div>
-          <!-- list Data-->
+        
 
           <div class="card-content">
             <div class="row">
               <div class="col-md-8">
                 <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">ชื่อร้านค้า</label>
-                  <input type="text" class="form-control" value="shop.name" [(ngModel)]="editing.name" >
+                  <input type="text" class="form-control" value="shop.name" [(ngModel)]="editing.name">
                 </div>
               </div>
               <div class="col-md-4">
@@ -262,7 +262,7 @@
                   <div class="sub">
                     <br>
                     <label>เวลาเปิดร้าน :</label>
-                    <input type="time" value="{{bindingData.openinghours.close}}" >
+                    <input type="time" value="{{bindingData.openinghours.close}}">
                     <br>
                     <label>เวลาปิดร้าน :</label>
                     <input type="time" value="{{bindingData.openinghours.close}}" [(ngModel)]="editing.openinghours.close">
@@ -371,7 +371,7 @@
             <button type="submit" class="btn btn-danger pull-right" (click)="updateData(editing)">Update</button>
             <div class="clearfix"></div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

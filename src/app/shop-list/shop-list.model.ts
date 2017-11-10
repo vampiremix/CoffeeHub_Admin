@@ -3,13 +3,7 @@ import { UsersModel } from "./../user/user.model";
 export class ShopsModel {
     _id: string;
     name: string;
-    address: {
-        address: string;
-        subdistrict: string;
-        district: string;
-        province: string;
-        postcode: string;
-    }
+    address: addressModel;
     shopcode: string;
     email: string;
     phone: string;
@@ -40,4 +34,11 @@ export class createUserModel {
 export class openTimeModel{
     open: Date;
     close: Date;
+}
+export class addressModel{
+    address: string;
+    subdistrict: string;
+    district: string;
+    province: string;
+    postcode: string;
 }
