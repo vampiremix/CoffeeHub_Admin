@@ -10,7 +10,11 @@ import { ShopsModel } from 'app/shop-list/shop-list.model';
 })
 export class ShopListComponent implements OnInit {
   public shoplist: Array<ShopsModel> = new Array<ShopsModel>();
-  public editing: Array<ShopsModel> = new Array<ShopsModel>();
+  public editing: ShopsModel = new ShopsModel();
+  public isEdit : Boolean = false;
+  public shopcode;
+  public edittitle;
+  public bindingData : ShopsModel = new ShopsModel();
   constructor(private http: Http, private route: RouteService) { }
 
   ngOnInit() {
@@ -28,7 +32,21 @@ export class ShopListComponent implements OnInit {
   }
 
   editshop(shop) {
-    this.editing = shop;
+    this.isEdit = true;
+    this.edittitle = shop.name;
+    this.shopcode = shop.shopcode;
+    this.bindingData = shop;
+    alert("time :" + this.bindingData.openinghours.open);
+    this.editing = JSON.parse(JSON.stringify(shop));
     console.log("shop edit : " , this.editing);
+  }
+  updateData(data){
+    this.http.put(this.route.route + 'api/shops/' + data._id, data, ).toPromise().then((res) => {
+      this.shoplist = res.json();
+      console.log(this.shoplist);
+    }).catch((err) => {
+      console.log("Cannot get shop list :", err);
+
+    });
   }
 }
