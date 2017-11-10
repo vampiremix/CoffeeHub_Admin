@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { RouteService } from 'app/route.service';
 import { ShopsModel } from 'app/shop-list/shop-list.model';
+import { FormGroup, FormControl } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-shop-list',
@@ -15,8 +18,31 @@ export class ShopListComponent implements OnInit {
   public isAdd: Boolean = false;
   public shopcode;
   public edittitle;
-  public bindingData: ShopsModel = new ShopsModel();
-  constructor(private http: Http, private route: RouteService) { }
+  addShop: FormGroup;
+  // public addData: any;
+  public sendAddShopData: ShopsModel = new ShopsModel();
+  constructor(private http: Http, private route: RouteService) {
+    this.addShop = new FormGroup({
+      name: new FormControl(''),
+      address: new FormControl(''),
+      subdistrict: new FormControl(''),
+      district: new FormControl(''),
+      province: new FormControl(''),
+      postcode: new FormControl(''),
+      shopcode: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+      lat: new FormControl(''),
+      lng: new FormControl(''),
+      open: new FormControl(''),
+      close: new FormControl(''),
+      facebook: new FormControl(''),
+      instagram: new FormControl(''),
+      line: new FormControl(''),
+      parking: new FormControl('')
+    })
+
+  }
 
   ngOnInit() {
     this.getShoplist();
@@ -32,12 +58,50 @@ export class ShopListComponent implements OnInit {
     });
   }
 
-  addShop() {
+  addShopfn() {
     this.isAdd = true;
     this.isEdit = false;
+    this.editing = null;
+
+
+  }
+  addShopData() {
+    let token = this.route.createAuthorizationHeader();
+    let user = JSON.parse(window.localStorage.getItem("user"));
+    this.sendAddShopData.name = this.addShop.value.name;
+    this.sendAddShopData.address.address = this.addShop.value.address;
+    this.sendAddShopData.address.subdistrict = this.addShop.value.subdistrict;
+    this.sendAddShopData.address.district = this.addShop.value.district;
+    this.sendAddShopData.address.province = this.addShop.value.province;
+    this.sendAddShopData.address.postcode = this.addShop.value.postcode;
+    this.sendAddShopData.shopcode = this.addShop.value.shopcode;
+    this.sendAddShopData.email = this.addShop.value.email;
+    this.sendAddShopData.phone = this.addShop.value.phone;
+    this.sendAddShopData.location.lat = this.addShop.value.lat;
+    this.sendAddShopData.location.lng = this.addShop.value.lng;
+    this.sendAddShopData.openinghours.open = this.addShop.value.open;
+    this.sendAddShopData.openinghours.close = this.addShop.value.close;
+    this.sendAddShopData.facebook = this.addShop.value.facebook;
+    this.sendAddShopData.instagram = this.addShop.value.instagram;
+    this.sendAddShopData.line = this.addShop.value.line;
+    this.sendAddShopData.parking = this.addShop.value.parking;
+    this.sendAddShopData.createduser = user._id;
+    console.log("ADD SHOP : ", this.sendAddShopData);
+    if (this.sendAddShopData.name !== null && this.sendAddShopData.address.address !== null) {
+      this.http.post(this.route.route + 'api/shops', this.sendAddShopData, { headers: token }).toPromise().then((res) => {
+        this.getShoplist();
+        this.sendAddShopData = null;
+        alert("Add Shop Complete !");
+        this.addShop.clearValidators();
+      })
+    } else {
+      alert("Please fill all data");
+    }
+
   }
   editshop(shop) {
     this.isEdit = true;
+    this.isAdd = false;
     this.edittitle = shop.name;
     this.shopcode = shop.shopcode;
     console.log("SHOP : ", shop);

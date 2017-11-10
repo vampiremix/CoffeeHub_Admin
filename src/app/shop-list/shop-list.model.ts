@@ -3,25 +3,22 @@ import { UsersModel } from "./../user/user.model";
 export class ShopsModel {
     _id: string;
     name: string;
-    address: addressModel;
+    address: addressModel = new addressModel() ;
     shopcode: string;
     email: string;
     phone: string;
-    location: {
-        lat: string;
-        lng: string;
-    }
+    location: locateModel = new locateModel();
     created: Date;
     logo: string;
     shopowner: string;
-    openinghours: openTimeModel;
+    openinghours: openTimeModel = new openTimeModel;
     facebook: string;
     instagram: string;
     line: string;
     parking: Array<string>;
     favorite: Array<UsersModel>;
     image: Array<string>;
-    createduser: UsersModel;
+    createduser: UsersModel = new UsersModel();
     editlog: Array<createUserModel>
 }
 export class createUserModel {
@@ -38,4 +35,11 @@ export class addressModel{
     district: string;
     province: string;
     postcode: string;
+}
+
+export class locateModel{
+    
+        lat: string;
+        lng: string;
+    
 }
