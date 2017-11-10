@@ -41,6 +41,7 @@ export class CreateShopownerComponent implements OnInit {
     this.edit1.lastName = this.login.value.lastName;
     this.edit1.email = this.login.value.email;
     this.edit1.phone = this.login.value.phone;
+    this.edit1.roles = ['shopowner'];
 
     alert(JSON.stringify(this.edit1));
 
