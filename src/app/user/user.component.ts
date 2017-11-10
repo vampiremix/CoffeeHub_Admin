@@ -1,3 +1,5 @@
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { RouteService } from '../route.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +15,7 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+
   headers = new Headers({
     'Content-Type': 'application/json'
   });
@@ -20,23 +23,85 @@ export class UserComponent implements OnInit {
   optionsURL = new RequestOptions({
     headers: this.headers
   });
-  userData: UsersModel = new UsersModel();
+
+  login: FormGroup;
+  userData: Array<UsersModel> = new Array<UsersModel>();
+  public edit: Array<UsersModel> = new Array<UsersModel>();
+  public edit1: UsersModel = new UsersModel();
 
   constructor(private http: Http, private route: RouteService) {
 
+    this.login = new FormGroup({
+      _id: new FormControl(this.edit1._id),
+      username: new FormControl(this.edit1.username),
+      firstName: new FormControl(this.edit1.firstName),
+      lastName: new FormControl(this.edit1.lastName),
+      email: new FormControl(this.edit1.email),
+      phone: new FormControl(this.edit1.phone),
+      profileImageURL: new FormControl(this.edit1.profileImageURL)
+
+    });
   }
 
   ngOnInit() {
-    this.getShoplist();
+    this.getUserlist();
   }
 
-  getShoplist() {
+  getUserlist() {
     this.http.get(this.route.route + 'api/users/').toPromise().then((res) => {
       this.userData = res.json();
       console.log(this.userData);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);
-
     });
+  }
+  getDetailUser(item) {
+    // alert(JSON.stringify(item));
+    this.edit1 = JSON.parse(JSON.stringify(item));
+    // alert(JSON.stringify(this.edit1))
+    this.login = new FormGroup({
+      _id: new FormControl(this.edit1._id),
+      username: new FormControl(this.edit1.username),
+      firstName: new FormControl(this.edit1.firstName),
+      lastName: new FormControl(this.edit1.lastName),
+      email: new FormControl(this.edit1.email),
+      phone: new FormControl(this.edit1.phone),
+      profileImageURL: new FormControl(this.edit1.profileImageURL)
+    });
+  }
+
+  doLogin() {
+    let userdata = { "username": this.login.value.username };
+    alert(userdata);
+  }
+  updateData() {
+    let token =  this.route.createAuthorizationHeader();
+    // let userdata = {
+    //   "_id":this.login.value._id,
+    //   "username": this.login.value.username,
+    //   "firstName": this.login.value.firstName,
+    //   "lastName": this.login.value.lastName,
+    //   "email": this.login.value.email,
+    //   "phone": this.login.value.phone,
+    //   "profileImageURL": this.login.value.profileImageURL,
+    //   "roles":this.edit1.roles
+    // };
+    // alert(JSON.stringify(userdata));
+    
+    this.edit1.username = this.login.value.username;
+    this.edit1.firstName = this.login.value.firstName;
+    this.edit1.lastName = this.login.value.lastName,
+    this.edit1.email = this.login.value.email,
+    this.edit1.phone = this.login.value.phone,
+    alert(JSON.stringify(this.edit1));
+
+    this.http.put(this.route.route + 'api/users/' + this.edit1._id, this.edit1, { headers:token}).toPromise().then((res) => {
+      // this.userData = res.json();
+      console.log(this.userData);
+      this.getUserlist();
+    }).catch((err) => {
+      console.log("Cannot get shop list :", err);
+    });
+
   }
 }
