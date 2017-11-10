@@ -37,3 +37,7 @@ export class createUserModel {
     user: UsersModel;
     date: Date;
 }
+export class openTimeModel{
+    open: Date;
+    close: Date;
+}
