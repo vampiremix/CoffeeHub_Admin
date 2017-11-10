@@ -22,6 +22,7 @@ import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RouteService } from 'app/route.service';
+import { CreateShopownerComponent } from './create-shopowner/create-shopowner.component';
 
 
 
@@ -39,6 +40,7 @@ import { RouteService } from 'app/route.service';
     ShopListComponent,
     UserComponent,
     LoginComponent,
+    CreateShopownerComponent,
 
   ],
   imports: [
