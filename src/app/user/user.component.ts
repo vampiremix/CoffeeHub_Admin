@@ -76,17 +76,6 @@ export class UserComponent implements OnInit {
   }
   updateData() {
     let token =  this.route.createAuthorizationHeader();
-    // let userdata = {
-    //   "_id":this.login.value._id,
-    //   "username": this.login.value.username,
-    //   "firstName": this.login.value.firstName,
-    //   "lastName": this.login.value.lastName,
-    //   "email": this.login.value.email,
-    //   "phone": this.login.value.phone,
-    //   "profileImageURL": this.login.value.profileImageURL,
-    //   "roles":this.edit1.roles
-    // };
-    // alert(JSON.stringify(userdata));
     
     this.edit1.username = this.login.value.username;
     this.edit1.firstName = this.login.value.firstName;
