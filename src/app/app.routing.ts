@@ -1,3 +1,4 @@
+import { CreateShopownerComponent } from './create-shopowner/create-shopowner.component';
 import { UserComponent } from './user/user.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'notifications', component: NotificationsComponent },
   { path: 'upgrade', component: UpgradeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'create-shopowner', component: CreateShopownerComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
