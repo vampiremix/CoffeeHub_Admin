@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RouteService } from 'app/route.service';
 import { CreateShopownerComponent } from './create-shopowner/create-shopowner.component';
+import { PromotionComponent } from './promotion/promotion.component';
 
 
 
@@ -42,6 +43,7 @@ import { CreateShopownerComponent } from './create-shopowner/create-shopowner.co
     UserComponent,
     LoginComponent,
     CreateShopownerComponent,
+    PromotionComponent
 
   ],
   imports: [

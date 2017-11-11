@@ -1,3 +1,4 @@
+import { PromotionComponent } from './promotion/promotion.component';
 import { CreateShopownerComponent } from './create-shopowner/create-shopowner.component';
 import { UserComponent } from './user/user.component';
 import { NgModule } from '@angular/core';
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'upgrade', component: UpgradeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'create-shopowner', component: CreateShopownerComponent },
+  { path: 'promotion', component: PromotionComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
