@@ -15,14 +15,20 @@
 
 
             <!-- <form class="navbar-form " role="search" [> -->
-              <div class="form-group form-black is-empty">
-                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="keyword" (keyup.enter)="seachItem(keyword)">
-                <span class="material-input"></span>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-offset-2 col-xs-offset-2">
+                <div class="form-group form-black is-empty">
+                  <input type="text" class="form-control" placeholder="Search" [(ngModel)]="keyword" (keyup.enter)="seachItem(keyword)">
+                  <span class="material-input"></span>
+                </div>
               </div>
-              <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="seachItem(keyword)">
-                <i class="material-icons">search</i>
-                <div class="ripple-container"></div>
-              </button>
+              <div class="col-xs-2 col-sm-2 btnsearch" >
+                  <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="seachItem(keyword)">
+                    <i class="material-icons">search</i>
+                    <div class="ripple-container"></div>
+                  </button>
+                </div>
+            </div>
             <!-- </form> -->
 
           </div>
