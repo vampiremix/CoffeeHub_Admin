@@ -24,7 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { RouteService } from 'app/route.service';
 import { CreateShopownerComponent } from './create-shopowner/create-shopowner.component';
 import { PromotionComponent } from './promotion/promotion.component';
-
+import { UploadImageComponent } from './upload-image/upload-image.component';
 
 
 
@@ -43,7 +43,8 @@ import { PromotionComponent } from './promotion/promotion.component';
     UserComponent,
     LoginComponent,
     CreateShopownerComponent,
-    PromotionComponent
+    PromotionComponent,
+    UploadImageComponent
 
   ],
   imports: [
@@ -54,7 +55,7 @@ import { PromotionComponent } from './promotion/promotion.component';
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [LoginComponent,RouteService],
   bootstrap: [AppComponent]

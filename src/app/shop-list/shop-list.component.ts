@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import { RouteService } from 'app/route.service';
 import { ShopsModel } from 'app/shop-list/shop-list.model';
 import { FormGroup, FormControl } from '@angular/forms';
-
+import * as firebase from "firebase";
 
 
 @Component({
@@ -23,6 +23,9 @@ export class ShopListComponent implements OnInit {
   addShop: FormGroup;
   // public addData: any;
   public sendAddShopData: ShopsModel = new ShopsModel();
+
+  Name: string;
+  myFile: File;
   constructor(private http: Http, private route: RouteService) {
     this.addShopStructure();
 
@@ -46,7 +49,7 @@ export class ShopListComponent implements OnInit {
       instagram: new FormControl(''),
       line: new FormControl(''),
       parking: new FormControl(''),
-      shopowner:new FormControl('')
+      shopowner: new FormControl('')
     })
   }
 
@@ -65,10 +68,10 @@ export class ShopListComponent implements OnInit {
 
     });
   }
-  getShopowner(){
+  getShopowner() {
     this.http.get(this.route.route + 'api/users/shopowner').toPromise().then((res) => {
       this.shopowner = res.json();
-      console.log("Shop Owner " ,this.shopowner);
+      console.log("Shop Owner ", this.shopowner);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);
 
@@ -108,7 +111,7 @@ export class ShopListComponent implements OnInit {
     if (this.sendAddShopData.name !== null && this.sendAddShopData.address.address !== null) {
       this.http.post(this.route.route + 'api/shops', this.sendAddShopData, { headers: token }).toPromise().then((res) => {
         this.getShoplist();
-        this.sendAddShopData = null;
+
         alert("Add Shop Complete !");
         this.addShopStructure();
       })
@@ -139,6 +142,10 @@ export class ShopListComponent implements OnInit {
       console.log("Cannot get shop list :", err);
 
     });
+  }
+  onclick() {
+    let xx = document.getElementById("exampleInputFile2");
+    alert("image : " + xx);
   }
 
 

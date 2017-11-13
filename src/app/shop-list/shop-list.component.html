@@ -283,9 +283,9 @@
                 <div class="col-md-9">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">เจ้าของร้าน : </label>
-                    <select  formControlName="shopowner">
+                    <select formControlName="shopowner">
                       <option value="">ยังไม่มีเจ้าของร้าน</option>
-                      <option  *ngFor="let item of shopowner" value="{{item._id}}">{{item.displayName}} ({{item.phone}}) </option>
+                      <option *ngFor="let item of shopowner" value="{{item._id}}">{{item.displayName}} ({{item.phone}}) </option>
                     </select>
                   </div>
                 </div>
@@ -410,12 +410,15 @@
                   <i class="material-icons">insert_photo</i>อัพโหลดรูป โลโก้</button>
                 <input type="file" id="exampleInputFile">
               </div>
+
               <div class="form-group">
-                <button class="btn btn-default" type="submit">
-                  <i class="material-icons">insert_photo</i>อัพโหลดรูป ร้านค้า</button>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Example block-level help text here.</p>
+                <button class="btn btn-default" type="submit" (click)="onclick()">
+                  <i class="material-icons">insert_photo</i>อัพโหลดรูป ร้าน</button>
+                <input type="file" id="exampleInputFile2">
               </div>
+
+
+           
             </form>
 
             <button type="submit" class="btn btn-danger pull-right" (click)="addShopData()">Create</button>
