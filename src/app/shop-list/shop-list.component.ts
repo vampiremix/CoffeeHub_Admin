@@ -18,10 +18,15 @@ export class ShopListComponent implements OnInit {
   public isAdd: Boolean = false;
   public shopcode;
   public edittitle;
+  public showSON = false;
   addShop: FormGroup;
   // public addData: any;
   public sendAddShopData: ShopsModel = new ShopsModel();
   constructor(private http: Http, private route: RouteService) {
+    this.addShopStructure();
+
+  }
+  addShopStructure() {
     this.addShop = new FormGroup({
       name: new FormControl(''),
       address: new FormControl(''),
@@ -41,8 +46,8 @@ export class ShopListComponent implements OnInit {
       line: new FormControl(''),
       parking: new FormControl('')
     })
-
   }
+
 
   ngOnInit() {
     this.getShoplist();
@@ -92,7 +97,7 @@ export class ShopListComponent implements OnInit {
         this.getShoplist();
         this.sendAddShopData = null;
         alert("Add Shop Complete !");
-        this.addShop.clearValidators();
+        this.addShopStructure();
       })
     } else {
       alert("Please fill all data");
@@ -122,4 +127,6 @@ export class ShopListComponent implements OnInit {
 
     });
   }
+
+
 }

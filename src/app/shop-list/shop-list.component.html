@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-9">
                       ชื่อร้าน : {{shop.name}}
-                      <br> เจ้าของร้าน : {{shop.shopowner.displayName}} ({{shop.shopowner.phone}})
+                      <br> <div *ngIf="shop.shopowner">เจ้าของร้าน : {{shop.shopowner.displayName}} ({{shop.shopowner.phone}})</div>
                       <br>
                       <i class="glyphicon glyphicon-envelope"></i> : {{shop.email}}
                       <br>
@@ -146,7 +146,7 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group form-black label-stacked is-empty">
-                          <label class="control-label">ตำบล</label>
+                          <label class="control-label">แขวง/ตำบล</label>
                           <input type="text" class="form-control" [(ngModel)]="editing.address.subdistrict">
                         </div>
                       </div>
@@ -217,7 +217,6 @@
               <button class="btn btn-default" type="submit">
                 <i class="material-icons">insert_photo</i>อัพโหลดรูป ร้านค้า</button>
               <input type="file" id="exampleInputFile">
-              <p class="help-block">Example block-level help text here.</p>
             </div>
 
 
@@ -247,7 +246,7 @@
                   </div>
                 </div>
               </div>
-
+              
               <div class="row">
                 <div class="col-md-7">
                   <div class="form-group form-black label-stacked is-empty">
@@ -256,12 +255,37 @@
                   </div>
                 </div>
               </div>
+            
 
               <div class="row">
                 <div class="col-md-9">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">E-mail ร้าน</label>
                     <input type="email" class="form-control" formControlName="email">
+                  </div>
+                </div>
+              </div>
+
+              <div class="example-wrapper">
+                <kendo-dropdownlist
+                    [data]="data"
+                    [filterable]="true"
+                    [textField]="'text'"
+                    [valueField]="'value'"
+                    (filterChange)="handleFilter($event)"
+                >
+                </kendo-dropdownlist>
+            </div>
+
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="form-group form-black label-stacked is-empty">
+                    <label class="control-label">ที่จอดรถ : </label>
+                    <select>
+                      <option value="have">มีที่จอดรถ</option>
+                      <option value="nothave">ไม่มีที่จอดรถ</option>
+                      <option value="ontheroad">จอดรถข้างทาง</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -304,7 +328,7 @@
                       <div class="row">
                         <div class="col-md-4">
                           <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">ตำบล</label>
+                            <label class="control-label">แขวง/ตำบล</label>
                             <input type="text" class="form-control" formControlName="subdistrict">
                           </div>
                         </div>
