@@ -284,7 +284,8 @@
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">เจ้าของร้าน : </label>
                     <select>
-                      <option value="have">name</option>
+                      <option value="">ยังไม่มีเจ้าของร้าน</option>
+                      <option  *ngFor="let item of shopowner" value="{{item._id}}">{{item.displayName}} ({{item.phone}})</option>
                     </select>
                   </div>
                 </div>
