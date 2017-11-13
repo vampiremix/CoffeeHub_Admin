@@ -75,6 +75,7 @@
       </div>
 
       <div class="col-md-6">
+        <!-- /////////////// EDIT //////////////// -->
         <div class="card" *ngIf="isEdit">
           <div class="card-header" data-background-color="red">
             <h4>แก้ไขข้อมูลร้าน : {{edittitle}} <span *ngIf="shopcode">({{shopcode}})</span></h4>
@@ -118,7 +119,7 @@
               <div class="col-md-9">
                 <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">ที่จอดรถ : </label>
-                  <select>
+                  <select [(ngModel)]="editing.parking">
                     <option value="have">มีที่จอดรถ</option>
                     <option value="nothave">ไม่มีที่จอดรถ</option>
                     <option value="ontheroad">จอดรถข้างทาง</option>
@@ -129,15 +130,16 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-
                   <label>เวลาเปิด-ปิด</label>
                   <div class="sub">
                     <br>
                     <label>เวลาเปิดร้าน :</label>
-                    <input type="time" [(ngModel)]="editing.openinghours.open">
+                    
+                    <input type="time" *ngIf="editing.openinghours.open" [(ngModel)]="editing.openinghours.open">
                     <br>
                     <label>เวลาปิดร้าน :</label>
-                    <input type="time" [(ngModel)]="editing.openinghours.close">
+                 
+                    <input type="time" *ngIf="editing.openinghours.close" [(ngModel)]="editing.openinghours.close">
                   </div>
                 </div>
               </div>
@@ -243,6 +245,9 @@
             <div class="clearfix"></div>
           </div>
         </div>
+        <!-- /////////////// EDIT //////////////// -->
+
+        <!-- /////////////// ADD //////////////// -->
         <div class="card" *ngIf="isAdd">
           <div class="card-header" data-background-color="red">
             <h4>สร้างข้อมูลร้านกาแฟ</h4>
@@ -302,7 +307,7 @@
                 <div class="col-md-9">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">ที่จอดรถ : </label>
-                    <select>
+                    <select formControlName="parking">
                       <option value="have">มีที่จอดรถ</option>
                       <option value="nothave">ไม่มีที่จอดรถ</option>
                       <option value="ontheroad">จอดรถข้างทาง</option>
@@ -431,6 +436,7 @@
             <div class="clearfix"></div>
           </div>
         </div>
+         <!-- /////////////// ADD //////////////// -->
       </div>
     </div>
   </div>

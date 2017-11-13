@@ -101,7 +101,7 @@ export class ShopListComponent implements OnInit {
     this.sendAddShopData.instagram = this.addShop.value.instagram;
     this.sendAddShopData.line = this.addShop.value.line;
     this.sendAddShopData.shopowner = this.addShop.value.shopowner;
-    // this.sendAddShopData.parking = this.addShop.value.parking;
+    this.sendAddShopData.parking = this.addShop.value.parking;
     this.sendAddShopData.createduser = user._id;
     console.log("ADD SHOP : ", this.sendAddShopData);
     if (this.sendAddShopData.name !== null && this.sendAddShopData.address.address !== null) {
@@ -136,6 +136,9 @@ export class ShopListComponent implements OnInit {
 
   }
   editshop(shop) {
+    if(this.isEdit == true){
+      this.editing = null;
+    }
     this.isEdit = true;
     this.isAdd = false;
     this.edittitle = shop.name;

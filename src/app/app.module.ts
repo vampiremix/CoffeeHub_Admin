@@ -27,7 +27,6 @@ import { PromotionComponent } from './promotion/promotion.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +43,7 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
     LoginComponent,
     CreateShopownerComponent,
     PromotionComponent,
-    UploadImageComponent
+    UploadImageComponent,
 
   ],
   imports: [

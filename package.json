@@ -18,7 +18,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "4.4.4",
+    "@angular/animations": "^4.4.6",
     "@angular/common": "4.4.4",
     "@angular/compiler": "4.4.4",
     "@angular/core": "4.4.4",
@@ -66,6 +66,6 @@
     "protractor": "5.1.0",
     "ts-node": "2.0.0",
     "tslint": "4.5.0",
-    "typescript": "2.4.2"
+    "typescript": "^2.3.4"
   }
 }
