@@ -15,7 +15,7 @@ export class ShopsModel {
     facebook: string;
     instagram: string;
     line: string;
-    parking: Array<string>;
+    parking: string;
     favorite: Array<UsersModel>;
     image: Array<string>;
     createduser: UsersModel = new UsersModel();

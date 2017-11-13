@@ -84,7 +84,7 @@ export class ShopListComponent implements OnInit {
     this.sendAddShopData.facebook = this.addShop.value.facebook;
     this.sendAddShopData.instagram = this.addShop.value.instagram;
     this.sendAddShopData.line = this.addShop.value.line;
-    this.sendAddShopData.parking = this.addShop.value.parking;
+    // this.sendAddShopData.parking = this.addShop.value.parking;
     this.sendAddShopData.createduser = user._id;
     console.log("ADD SHOP : ", this.sendAddShopData);
     if (this.sendAddShopData.name !== null && this.sendAddShopData.address.address !== null) {
