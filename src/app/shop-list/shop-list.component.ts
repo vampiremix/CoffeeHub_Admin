@@ -19,6 +19,7 @@ export class ShopListComponent implements OnInit {
   public shopcode;
   public edittitle;
   public showSON = false;
+  public shopowner;
   addShop: FormGroup;
   // public addData: any;
   public sendAddShopData: ShopsModel = new ShopsModel();
@@ -51,12 +52,22 @@ export class ShopListComponent implements OnInit {
 
   ngOnInit() {
     this.getShoplist();
+    this.getShopowner();
   }
 
   getShoplist() {
     this.http.get(this.route.route + 'api/shops/').toPromise().then((res) => {
       this.shoplist = res.json();
       console.log(this.shoplist);
+    }).catch((err) => {
+      console.log("Cannot get shop list :", err);
+
+    });
+  }
+  getShopowner(){
+    this.http.get(this.route.route + 'api/users/shopowner').toPromise().then((res) => {
+      this.shopowner = res.json();
+      console.log("Shop Owner " ,this.shopowner);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);
 
