@@ -45,7 +45,8 @@ export class ShopListComponent implements OnInit {
       facebook: new FormControl(''),
       instagram: new FormControl(''),
       line: new FormControl(''),
-      parking: new FormControl('')
+      parking: new FormControl(''),
+      shopowner:new FormControl('')
     })
   }
 
@@ -100,6 +101,7 @@ export class ShopListComponent implements OnInit {
     this.sendAddShopData.facebook = this.addShop.value.facebook;
     this.sendAddShopData.instagram = this.addShop.value.instagram;
     this.sendAddShopData.line = this.addShop.value.line;
+    this.sendAddShopData.shopowner = this.addShop.value.shopowner;
     // this.sendAddShopData.parking = this.addShop.value.parking;
     this.sendAddShopData.createduser = user._id;
     console.log("ADD SHOP : ", this.sendAddShopData);
