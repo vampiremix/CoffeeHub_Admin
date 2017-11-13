@@ -14,16 +14,16 @@
             </div>
 
 
-            <form class="navbar-form " role="search">
+            <!-- <form class="navbar-form " role="search" [> -->
               <div class="form-group form-black is-empty">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="keyword" (keyup.enter)="seachItem(keyword)">
                 <span class="material-input"></span>
               </div>
-              <button type="submit" class="btn btn-white btn-round btn-just-icon">
+              <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="seachItem(keyword)">
                 <i class="material-icons">search</i>
                 <div class="ripple-container"></div>
               </button>
-            </form>
+            <!-- </form> -->
 
           </div>
           <!-- list Data-->
@@ -418,7 +418,7 @@
               </div>
 
 
-           
+
             </form>
 
             <button type="submit" class="btn btn-danger pull-right" (click)="addShopData()">Create</button>

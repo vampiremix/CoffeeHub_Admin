@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { RouteService } from 'app/route.service';
 import { ShopsModel } from 'app/shop-list/shop-list.model';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, NgModel } from '@angular/forms';
 import * as firebase from "firebase";
-
 
 @Component({
   selector: 'app-shop-list',
@@ -24,11 +23,8 @@ export class ShopListComponent implements OnInit {
   // public addData: any;
   public sendAddShopData: ShopsModel = new ShopsModel();
 
-  Name: string;
-  myFile: File;
   constructor(private http: Http, private route: RouteService) {
     this.addShopStructure();
-
   }
   addShopStructure() {
     this.addShop = new FormGroup({
@@ -62,7 +58,7 @@ export class ShopListComponent implements OnInit {
   getShoplist() {
     this.http.get(this.route.route + 'api/shops/').toPromise().then((res) => {
       this.shoplist = res.json();
-      console.log(this.shoplist);
+      console.log("Load shoplist : ", this.shoplist);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);
 
@@ -129,7 +125,7 @@ export class ShopListComponent implements OnInit {
           instagram: new FormControl(''),
           line: new FormControl(''),
           parking: new FormControl(''),
-          shopowner:new FormControl('')
+          shopowner: new FormControl('')
         });
         alert("Add Shop Complete !");
         // this.addShopStructure();
@@ -166,6 +162,27 @@ export class ShopListComponent implements OnInit {
     let xx = document.getElementById("exampleInputFile2");
     alert("image : " + xx);
   }
+  loadshop() {
 
+  }
+  seachItem(keyword) {
+
+    // Reset items back to all of the items
+    // this.getShoplist();
+
+    // set val to the value of the searchbar
+    let val = keyword;
+    // alert("Event : " + keyword);
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() !== '') {
+      this.shoplist = this.shoplist.filter((item) => {
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+    if (val == '') {
+      this.getShoplist();
+
+    }
+  }
 
 }
