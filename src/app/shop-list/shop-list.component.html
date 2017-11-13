@@ -146,7 +146,7 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group form-black label-stacked is-empty">
-                          <label class="control-label">ตำบล</label>
+                          <label class="control-label">แขวง/ตำบล</label>
                           <input type="text" class="form-control" [(ngModel)]="editing.address.subdistrict">
                         </div>
                       </div>
@@ -217,7 +217,6 @@
               <button class="btn btn-default" type="submit">
                 <i class="material-icons">insert_photo</i>อัพโหลดรูป ร้านค้า</button>
               <input type="file" id="exampleInputFile">
-              <p class="help-block">Example block-level help text here.</p>
             </div>
 
 
@@ -244,6 +243,15 @@
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">Shop Code</label>
                     <input type="text" class="form-control" formControlName="shopcode">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="form-group form-black label-stacked is-empty">
+                    <label class="control-label">เบอร์โทรร้าน</label>
+                    <input type="tel" class="form-control" formControlName="phone">
                   </div>
                 </div>
               </div>
@@ -304,7 +312,7 @@
                       <div class="row">
                         <div class="col-md-4">
                           <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">ตำบล</label>
+                            <label class="control-label">แขวง/ตำบล</label>
                             <input type="text" class="form-control" formControlName="subdistrict">
                           </div>
                         </div>
