@@ -111,9 +111,28 @@ export class ShopListComponent implements OnInit {
     if (this.sendAddShopData.name !== null && this.sendAddShopData.address.address !== null) {
       this.http.post(this.route.route + 'api/shops', this.sendAddShopData, { headers: token }).toPromise().then((res) => {
         this.getShoplist();
-
+        this.addShop = new FormGroup({
+          name: new FormControl(''),
+          address: new FormControl(''),
+          subdistrict: new FormControl(''),
+          district: new FormControl(''),
+          province: new FormControl(''),
+          postcode: new FormControl(''),
+          shopcode: new FormControl(''),
+          email: new FormControl(''),
+          phone: new FormControl(''),
+          lat: new FormControl(''),
+          lng: new FormControl(''),
+          open: new FormControl(''),
+          close: new FormControl(''),
+          facebook: new FormControl(''),
+          instagram: new FormControl(''),
+          line: new FormControl(''),
+          parking: new FormControl(''),
+          shopowner:new FormControl('')
+        });
         alert("Add Shop Complete !");
-        this.addShopStructure();
+        // this.addShopStructure();
       })
     } else {
       alert("Please fill all data");
