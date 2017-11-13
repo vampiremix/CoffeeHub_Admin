@@ -18,6 +18,7 @@ export class ShopListComponent implements OnInit {
   public isAdd: Boolean = false;
   public shopcode;
   public edittitle;
+  public showSON = false;
   addShop: FormGroup;
   // public addData: any;
   public sendAddShopData: ShopsModel = new ShopsModel();
@@ -126,4 +127,6 @@ export class ShopListComponent implements OnInit {
 
     });
   }
+
+
 }

@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-9">
                       ชื่อร้าน : {{shop.name}}
-                      <br> เจ้าของร้าน : {{shop.shopowner.displayName}} ({{shop.shopowner.phone}})
+                      <br> <div *ngIf="shop.shopowner">เจ้าของร้าน : {{shop.shopowner.displayName}} ({{shop.shopowner.phone}})</div>
                       <br>
                       <i class="glyphicon glyphicon-envelope"></i> : {{shop.email}}
                       <br>
@@ -255,15 +255,7 @@
                   </div>
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-md-7">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">เบอร์โทรร้าน</label>
-                    <input type="tel" class="form-control" formControlName="phone">
-                  </div>
-                </div>
-              </div>
+            
 
               <div class="row">
                 <div class="col-md-9">
@@ -274,15 +266,25 @@
                 </div>
               </div>
 
+              <div class="example-wrapper">
+                <kendo-dropdownlist
+                    [data]="data"
+                    [filterable]="true"
+                    [textField]="'text'"
+                    [valueField]="'value'"
+                    (filterChange)="handleFilter($event)"
+                >
+                </kendo-dropdownlist>
+            </div>
+
               <div class="row">
                 <div class="col-md-9">
                   <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">ที่จอดรถ </label>
+                    <label class="control-label">ที่จอดรถ : </label>
                     <select>
                       <option value="have">มีที่จอดรถ</option>
                       <option value="nothave">ไม่มีที่จอดรถ</option>
                       <option value="ontheroad">จอดรถข้างทาง</option>
-
                     </select>
                   </div>
                 </div>
