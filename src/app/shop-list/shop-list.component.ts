@@ -158,19 +158,8 @@ export class ShopListComponent implements OnInit {
 
     });
   }
-  onclick() {
-    let xx = document.getElementById("exampleInputFile2");
-    alert("image : " + xx);
-  }
-  loadshop() {
-
-  }
+ 
   seachItem(keyword) {
-
-    // Reset items back to all of the items
-    // this.getShoplist();
-
-    // set val to the value of the searchbar
     let val = keyword;
     // alert("Event : " + keyword);
     // if the value is an empty string don't filter the items
