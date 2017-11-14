@@ -3,7 +3,8 @@ import { Http, Response } from '@angular/http';
 import { RouteService } from 'app/route.service';
 import { ShopsModel } from 'app/shop-list/shop-list.model';
 import { FormGroup, FormControl } from '@angular/forms';
-
+import { FileUploadModule } from 'primeng/primeng';
+import { Message } from '../../../node_modules/primeng/components/common/api';
 
 
 @Component({
@@ -28,8 +29,14 @@ export class ShopListComponent implements OnInit {
   parkingOpt;
   //cars: SelectItem[];
 
+  msgs: Message[];
+  uploadedFiles: any[] = [];
+
   public sendAddShopData: ShopsModel = new ShopsModel();
-  constructor(private http: Http, private route: RouteService) {
+  constructor(private http: Http,
+    private route: RouteService,
+    private fileUploadModule: FileUploadModule
+  ) {
     this.addShopStructure();
 
     this.parkingOpt = [
@@ -65,6 +72,7 @@ export class ShopListComponent implements OnInit {
   ngOnInit() {
     this.getShoplist();
     this.getShopowner();
+
   }
 
   getShoplist() {
@@ -191,4 +199,16 @@ export class ShopListComponent implements OnInit {
 
     }
   }
+
+  onUpload(event) {
+    alert("ssssssss");
+    for(let file of event.files) {
+        this.uploadedFiles.push(file);
+        console.log(this.uploadedFiles);
+    }
+
+    this.msgs = [];
+    this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});
+}
+
 }
