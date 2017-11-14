@@ -12,6 +12,22 @@
     padding-left: 20px;
 }
 
+.bg-edit {
+    background-color: #f44336;
+    color: white;
+}
+
+#edit {
+    margin-top: -60px;
+    text-align: -webkit-right;
+    padding-right: 22px;
+}
+
+.card .card-content {
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+
 .name {
     margin-top: 20px;
 }
@@ -56,3 +72,9 @@
 /* img.profile-img{
     background-size: cover;
 } */
+
+.panel-body {
+    padding: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
