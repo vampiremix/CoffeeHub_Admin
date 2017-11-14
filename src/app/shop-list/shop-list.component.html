@@ -6,7 +6,7 @@
           <div class="card-header" data-background-color="red">
             <h4>รายการ ร้านกาแฟ</h4>
             <div class="row">
-              <div class="col-md-12" id="edit">
+              <div class="col-md-12" id="add">
                 <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="addShopfn()">
                   <i class="material-icons">add</i>
                 </button>
@@ -89,163 +89,6 @@
           <!-- list Data-->
 
           <div class="card-content">
-            <div class="row">
-              <div class="col-md-8">
-                <div class="form-group form-black label-stacked is-empty">
-                  <label class="control-label">ชื่อร้าน</label>
-                  <input type="text" class="form-control" [(ngModel)]="editing.name">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group form-black label-stacked is-empty">
-                  <label class="control-label">Shop Code</label>
-                  <input type="text" class="form-control" disabled [(ngModel)]="shopcode">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-7">
-                <div class="form-group form-black label-stacked is-empty">
-                  <label class="control-label">เบอร์โทรร้านค้า</label>
-                  <input type="tel" class="form-control" [(ngModel)]="editing.phone">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-9">
-                <div class="form-group form-black label-stacked is-empty">
-                  <label class="control-label">E-mail ร้านค้า</label>
-                  <input type="email" class="form-control" [(ngModel)]="editing.email">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-9">
-                <div class="form-group form-black label-stacked is-empty">
-                  <label class="control-label">เจ้าของร้าน : </label>
-                  <p-dropdown [options]="getshopowner" [(ngModel)]="editing.shopowner" placeholder=" เลือกเจ้าของร้าน " optionLabel="displayName"></p-dropdown>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-9">
-                <div class="form-group form-black label-stacked is-empty">
-                  <label class="control-label">ที่จอดรถ : </label>
-                  <p-dropdown [options]="parkingOpt" [(ngModel)]="editing.parking" [style]="{'width':'150px'}" editable="true" placeholder="เลือกที่จอดรถ"></p-dropdown>
-                </div>
-
-
-
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <div class="sub">
-
-                    <label>เวลาเปิดร้าน :</label>
-                    <p-calendar [timeOnly]="true" *ngIf="editing.openinghours.open" [(ngModel)]="editing.openinghours.open"></p-calendar>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <div class="sub">
-
-                    <label>เวลาปิดร้าน :</label>
-                    <p-calendar [timeOnly]="true" *ngIf="editing.openinghours.close" [(ngModel)]="editing.openinghours.close"></p-calendar>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label>ที่อยู่</label>
-                  <div class="sub">
-                    <div class="row">
-                      <div class="col-md-7">
-                        <div class="form-group form-black label-stacked is-empty">
-                          <label class="control-label">ที่อยู่</label>
-                          <input type="text" class="form-control" [(ngModel)]="editing.address.address">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group form-black label-stacked is-empty">
-                          <label class="control-label">รหัสไปรษณีย์</label>
-                          <input type="text" class="form-control" [(ngModel)]="editing.address.postcode">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group form-black label-stacked is-empty">
-                          <label class="control-label">แขวง/ตำบล</label>
-                          <input type="text" class="form-control" [(ngModel)]="editing.address.subdistrict">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group form-black label-stacked is-empty">
-                          <label class="control-label">อำเภอ</label>
-                          <input type="text" class="form-control" [(ngModel)]="editing.address.district">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group form-black label-stacked is-empty">
-                          <label class="control-label">จังหวัด</label>
-                          <input type="text" class="form-control" [(ngModel)]="editing.address.province">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group form-black label-stacked is-empty">
-                          <label class="control-label">ละติจูด</label>
-                          <input type="text" class="form-control" [(ngModel)]="editing.location.lat">
-                        </div>
-                      </div>
-                      <div class="col-md-5">
-                        <div class="form-group form-black label-stacked is-empty">
-                          <label class="control-label">ลองติจูด</label>
-                          <input type="text" class="form-control" [(ngModel)]="editing.location.lng">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label>Social</label>
-                  <div class="sub">
-                    <div class="form-group form-black label-stacked is-empty">
-                      <label class="control-label">Facebook</label>
-                      <input type="text" class="form-control" [(ngModel)]="editing.facebook">
-                    </div>
-                    <div class="form-group form-black label-stacked is-empty">
-                      <label class="control-label">Instagram</label>
-                      <input type="text" class="form-control" [(ngModel)]="editing.instagram">
-                    </div>
-                    <div class="form-group form-black label-stacked is-empty">
-                      <label class="control-label">Line</label>
-                      <input type="text" class="form-control" [(ngModel)]="editing.line">
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
             <div class="form-group">
               <button class="btn btn-default" type="submit">
                 <i class="material-icons">insert_photo</i>อัพโหลดรูป โลโก้</button>
@@ -256,6 +99,145 @@
                 <i class="material-icons">insert_photo</i>อัพโหลดรูป ร้านค้า</button>
               <input type="file" id="exampleInputFile">
             </div>
+
+            <p-accordion [multiple]="true">
+              <p-accordionTab header="ข้อมลร้าน" [selected]="true">
+
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="form-group form-black label-stacked is-empty">
+                      <label class="control-label">ชื่อร้าน</label>
+                      <input type="text" class="form-control" [(ngModel)]="editing.name">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group form-black label-stacked is-empty">
+                      <label class="control-label">Shop Code</label>
+                      <input type="text" class="form-control" disabled [(ngModel)]="shopcode">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-7">
+                    <div class="form-group form-black label-stacked is-empty">
+                      <label class="control-label">เบอร์โทรร้านค้า</label>
+                      <input type="tel" class="form-control" [(ngModel)]="editing.phone">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-9">
+                    <div class="form-group form-black label-stacked is-empty">
+                      <label class="control-label">E-mail ร้านค้า</label>
+                      <input type="email" class="form-control" [(ngModel)]="editing.email">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-9">
+                    <div class="form-group form-black label-stacked is-empty">
+                      <label class="control-label">เจ้าของร้าน : </label>
+                      <p-dropdown [options]="getshopowner" [(ngModel)]="editing.shopowner" placeholder=" เลือกเจ้าของร้าน " optionLabel="displayName"></p-dropdown>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-9">
+                    <div class="form-group form-black label-stacked is-empty">
+                      <label class="control-label">ที่จอดรถ : </label>
+                      <p-dropdown [options]="parkingOpt" [(ngModel)]="editing.parking" [style]="{'width':'150px'}" editable="true" placeholder="เลือกที่จอดรถ"></p-dropdown>
+                    </div>
+                  </div>
+                </div>
+
+              </p-accordionTab>
+              <p-accordionTab header="ที่อยู่">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="sub">
+                        <div class="row">
+                          <div class="col-md-7">
+                            <div class="form-group form-black label-stacked is-empty">
+                              <label class="control-label">ที่อยู่</label>
+                              <input type="text" class="form-control" [(ngModel)]="editing.address.address">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group form-black label-stacked is-empty">
+                              <label class="control-label">รหัสไปรษณีย์</label>
+                              <input type="text" class="form-control" [(ngModel)]="editing.address.postcode">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group form-black label-stacked is-empty">
+                              <label class="control-label">แขวง/ตำบล</label>
+                              <input type="text" class="form-control" [(ngModel)]="editing.address.subdistrict">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group form-black label-stacked is-empty">
+                              <label class="control-label">อำเภอ</label>
+                              <input type="text" class="form-control" [(ngModel)]="editing.address.district">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group form-black label-stacked is-empty">
+                              <label class="control-label">จังหวัด</label>
+                              <input type="text" class="form-control" [(ngModel)]="editing.address.province">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-5">
+                            <div class="form-group form-black label-stacked is-empty">
+                              <label class="control-label">ละติจูด</label>
+                              <input type="text" class="form-control" [(ngModel)]="editing.location.lat">
+                            </div>
+                          </div>
+                          <div class="col-md-5">
+                            <div class="form-group form-black label-stacked is-empty">
+                              <label class="control-label">ลองติจูด</label>
+                              <input type="text" class="form-control" [(ngModel)]="editing.location.lng">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </p-accordionTab>
+              <p-accordionTab header="Social">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="sub">
+                        <div class="form-group form-black label-stacked is-empty">
+                          <label class="control-label">Facebook</label>
+                          <input type="text" class="form-control" [(ngModel)]="editing.facebook">
+                        </div>
+                        <div class="form-group form-black label-stacked is-empty">
+                          <label class="control-label">Instagram</label>
+                          <input type="text" class="form-control" [(ngModel)]="editing.instagram">
+                        </div>
+                        <div class="form-group form-black label-stacked is-empty">
+                          <label class="control-label">Line</label>
+                          <input type="text" class="form-control" [(ngModel)]="editing.line">
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </p-accordionTab>
+            </p-accordion>
+
+
 
 
             <button type="submit" class="btn btn-danger pull-right" (click)="updateData(editing)">Update</button>
@@ -273,169 +255,181 @@
 
           <div class="card-content">
             <form [formGroup]="addShop" (ngSubmit)="xx()">
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">ชื่อร้าน</label>
-                    <input type="text" class="form-control" formControlName="name">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">Shop Code</label>
-                    <input type="text" class="form-control" formControlName="shopcode">
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">เบอร์โทรร้าน</label>
-                    <input type="tel" class="form-control" formControlName="phone">
-
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">E-mail ร้าน</label>
-                    <input type="email" class="form-control" formControlName="email">
-                  </div>
-                </div>
-
-              </div>
-
-
-              <div class="row">
-                <div class="col-md-9">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">เจ้าของร้าน : </label>
-                    <p-dropdown [options]="getshopowner" formControlName="shopowner" placeholder=" เลือกเจ้าของร้าน " optionLabel="displayName"></p-dropdown>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-9">
-
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group form-black label-stacked is-empty">
-                    <label class="control-label">ที่จอดรถ : </label>
-                    <p-dropdown [options]="parkingOpt" formControlName="parking" [style]="{'width':'150px'}" editable="true" placeholder="เลือกที่จอดรถ"></p-dropdown>
-                  </div>
-                </div>
-
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <div class="sub">
-
-                      <label>เวลาเปิดร้าน :</label>
-                      <p-calendar [timeOnly]="true" dataType="date" formControlName="open"></p-calendar>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <div class="sub">
-
-                      <label>เวลาปิดร้าน :</label>
-                      <p-calendar [timeOnly]="true" dataType="date"  formControlName="close"></p-calendar>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>ที่อยู่</label>
-                    <div class="sub">
-                      <div class="row">
-                        <div class="col-md-7">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">ที่อยู่</label>
-                            <input type="text" class="form-control" formControlName="address">
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">จังหวัด</label>
-                            <input type="text" class="form-control" formControlName="province">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">แขวง/ตำบล</label>
-                            <input type="text" class="form-control" formControlName="subdistrict">
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">อำเภอ</label>
-                            <input type="text" class="form-control" formControlName="district">
-                          </div>
-                        </div>
-
-                        <div class="col-md-4">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">รหัสไปรษณีย์</label>
-                            <input type="text" class="form-control" formControlName="postcode">
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-5">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">ละติจูด</label>
-                            <input type="text" class="form-control" formControlName="lat">
-                          </div>
-                        </div>
-                        <div class="col-md-5">
-                          <div class="form-group form-black label-stacked is-empty">
-                            <label class="control-label">ลองติจูด</label>
-                            <input type="text" class="form-control" formControlName="lng">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
 
 
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Social</label>
-                    <div class="sub">
+
+
+
+
+
+
+              <p-accordion [multiple]="true">
+                <p-accordionTab header="ข้อมูลร้าน"  [selected]="true">
+                  <div class="row">
+                    <div class="col-md-8">
                       <div class="form-group form-black label-stacked is-empty">
-                        <label class="control-label">Facebook</label>
-                        <input type="text" class="form-control" formControlName="facebook">
+                        <label class="control-label">ชื่อร้าน</label>
+                        <input type="text" class="form-control" formControlName="name">
                       </div>
+                    </div>
+                    <div class="col-md-4">
                       <div class="form-group form-black label-stacked is-empty">
-                        <label class="control-label">Instagram</label>
-                        <input type="text" class="form-control" formControlName="instagram">
+                        <label class="control-label">Shop Code</label>
+                        <input type="text" class="form-control" formControlName="shopcode">
                       </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
                       <div class="form-group form-black label-stacked is-empty">
-                        <label class="control-label">Line</label>
-                        <input type="text" class="form-control" formControlName="line">
+                        <label class="control-label">เบอร์โทรร้าน</label>
+                        <input type="tel" class="form-control" formControlName="phone">
+
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group form-black label-stacked is-empty">
+                        <label class="control-label">E-mail ร้าน</label>
+                        <input type="email" class="form-control" formControlName="email">
                       </div>
                     </div>
 
                   </div>
-                </div>
-              </div>
+
+
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div class="form-group form-black label-stacked is-empty">
+                        <label class="control-label">เจ้าของร้าน : </label>
+                        <p-dropdown [options]="getshopowner" formControlName="shopowner" placeholder=" เลือกเจ้าของร้าน " optionLabel="displayName"></p-dropdown>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-9">
+
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group form-black label-stacked is-empty">
+                        <label class="control-label">ที่จอดรถ : </label>
+                        <p-dropdown [options]="parkingOpt" formControlName="parking" [style]="{'width':'150px'}" editable="true" placeholder="เลือกที่จอดรถ"></p-dropdown>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <div class="sub">
+
+                          <label>เวลาเปิดร้าน :</label>
+                          <p-calendar [timeOnly]="true" dataType="date" formControlName="open"></p-calendar>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <div class="sub">
+
+                          <label>เวลาปิดร้าน :</label>
+                          <p-calendar [timeOnly]="true" dataType="date" formControlName="close"></p-calendar>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </p-accordionTab>
+                <p-accordionTab header="ที่อยู่ร้าน">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <div class="sub">
+                          <div class="row">
+                            <div class="col-md-7">
+                              <div class="form-group form-black label-stacked is-empty">
+                                <label class="control-label">ที่อยู่</label>
+                                <input type="text" class="form-control" formControlName="address">
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group form-black label-stacked is-empty">
+                                <label class="control-label">จังหวัด</label>
+                                <input type="text" class="form-control" formControlName="province">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <div class="form-group form-black label-stacked is-empty">
+                                <label class="control-label">แขวง/ตำบล</label>
+                                <input type="text" class="form-control" formControlName="subdistrict">
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group form-black label-stacked is-empty">
+                                <label class="control-label">อำเภอ</label>
+                                <input type="text" class="form-control" formControlName="district">
+                              </div>
+                            </div>
+
+                            <div class="col-md-4">
+                              <div class="form-group form-black label-stacked is-empty">
+                                <label class="control-label">รหัสไปรษณีย์</label>
+                                <input type="text" class="form-control" formControlName="postcode">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-5">
+                              <div class="form-group form-black label-stacked is-empty">
+                                <label class="control-label">ละติจูด</label>
+                                <input type="text" class="form-control" formControlName="lat">
+                              </div>
+                            </div>
+                            <div class="col-md-5">
+                              <div class="form-group form-black label-stacked is-empty">
+                                <label class="control-label">ลองติจูด</label>
+                                <input type="text" class="form-control" formControlName="lng">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </p-accordionTab>
+                <p-accordionTab header="Social">
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <div class="sub">
+                          <div class="form-group form-black label-stacked is-empty">
+                            <label class="control-label">Facebook</label>
+                            <input type="text" class="form-control" formControlName="facebook">
+                          </div>
+                          <div class="form-group form-black label-stacked is-empty">
+                            <label class="control-label">Instagram</label>
+                            <input type="text" class="form-control" formControlName="instagram">
+                          </div>
+                          <div class="form-group form-black label-stacked is-empty">
+                            <label class="control-label">Line</label>
+                            <input type="text" class="form-control" formControlName="line">
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </p-accordionTab>
+              </p-accordion>
 
               <div class="form-group">
                 <button class="btn btn-default" type="submit">
@@ -452,7 +446,7 @@
               <div>
                 <p-growl [value]="msgs"></p-growl>
                 <h3>Basic</h3>
-                <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000"  (onUpload)="onUpload($event)"></p-fileUpload>
+                <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)"></p-fileUpload>
               </div>
 
             </form>
