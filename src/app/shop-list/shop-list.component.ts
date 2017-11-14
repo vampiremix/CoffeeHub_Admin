@@ -22,10 +22,27 @@ export class ShopListComponent implements OnInit {
   addShop: FormGroup;
   value: Date;
   // public addData: any;
+ 
+  selectedCar: string;
+  cars: SelectItem[];
+
   public sendAddShopData: ShopsModel = new ShopsModel();
 
   constructor(private http: Http, private route: RouteService) {
     this.addShopStructure();
+
+    this.cars = [
+      {label: 'Audi', value: 'Audi'},
+      {label: 'BMW', value: 'BMW'},
+      {label: 'Fiat', value: 'Fiat'},
+      {label: 'Ford', value: 'Ford'},
+      {label: 'Honda', value: 'Honda'},
+      {label: 'Jaguar', value: 'Jaguar'},
+      {label: 'Mercedes', value: 'Mercedes'},
+      {label: 'Renault', value: 'Renault'},
+      {label: 'VW', value: 'VW'},
+      {label: 'Volvo', value: 'Volvo'}
+  ];
   }
   addShopStructure() {
     this.addShop = new FormGroup({
@@ -50,7 +67,8 @@ export class ShopListComponent implements OnInit {
     })
   }
 
-
+  
+  
   ngOnInit() {
     this.getShoplist();
     this.getShopowner();
