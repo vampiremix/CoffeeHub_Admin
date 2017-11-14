@@ -24,9 +24,13 @@ import { LoginComponent } from './login/login.component';
 import { RouteService } from 'app/route.service';
 import { CreateShopownerComponent } from './create-shopowner/create-shopowner.component';
 import { PromotionComponent } from './promotion/promotion.component';
-import { UploadImageComponent } from './upload-image/upload-image.component';
 
-import { DropdownModule,CalendarModule}  from 'primeng/primeng';
+import { DataListModule ,CheckboxModule,FileUploadModule,CalendarModule,DropdownModule}  from 'primeng/primeng';
+import { AngularFireModule } from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { environment } from '../environments/environment';
+import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
+
 
 
 @NgModule({
@@ -45,7 +49,7 @@ import { DropdownModule,CalendarModule}  from 'primeng/primeng';
     LoginComponent,
     CreateShopownerComponent,
     PromotionComponent,
-    UploadImageComponent,
+    UploadFormComponent,
     
   ],
   imports: [
@@ -57,6 +61,10 @@ import { DropdownModule,CalendarModule}  from 'primeng/primeng';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CheckboxModule,
+    CalendarModule,
+    AngularFireModule.initializeApp(environment.firebase,'Coffee Hub'),
+    AngularFireDatabaseModule,
     DropdownModule,
     CalendarModule
   ],
