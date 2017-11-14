@@ -130,7 +130,7 @@ export class ShopListComponent implements OnInit {
         });
         alert("Add Shop Complete !");
         // this.addShopStructure();
-      })
+      });
     } else {
       alert("Please fill all data");
     }
