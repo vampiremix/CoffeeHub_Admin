@@ -39,19 +39,22 @@
                 <div class="panel-body">
                   <div class="row">
                     <div class="col-xs-3 col-md-3" *ngIf="shop.image[0];">
-                      <img [src]="shop.image[0]" alt="...">
+                      <img [src]="shop.image[0]" class="logo-size" alt="...">
                     </div>
                     <div class="col-xs-3 col-md-3" *ngIf="!shop.image[0];">
-                      <img class="logo-size" src="/assets/img/NoCoffe.gif" />
+                      <img class="logo-size" src="./assets/img/NoCoffe.gif" />
                     </div>
                     <div class="col-md-9">
                       ชื่อร้าน : {{shop.name}}
                       <br>
                       <div *ngIf="shop.shopowner">เจ้าของร้าน : {{shop.shopowner.displayName}} ({{shop.shopowner.phone}})</div>
                       <br>
-                      <i class="glyphicon glyphicon-envelope"></i> : {{shop.email}}
+                      <div *ngIf="shop.email">
+                        <i class="glyphicon glyphicon-envelope"></i> : {{shop.email}}</div>
                       <br>
-                      <i class="glyphicon glyphicon-earphone"></i> : {{shop.phone}}
+                      <div *ngIf="shop.phone">
+                        <i class="glyphicon glyphicon-earphone" ></i> : {{shop.phone}}
+                      </div>
                       <br>
                     </div>
                   </div>
@@ -122,16 +125,11 @@
               <div class="col-md-9">
                 <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">ที่จอดรถ : </label>
-                  <select [(ngModel)]="editing.parking">
-                    <option value="have">มีที่จอดรถ</option>
-                    <option value="nothave">ไม่มีที่จอดรถ</option>
-                    <option value="ontheroad">จอดรถข้างทาง</option>
-                  </select>
+                  <p-dropdown [options]="parkingOpt" [(ngModel)]="editing.parking" [style]="{'width':'150px'}" editable="true" placeholder="เลือกที่จอดรถ"></p-dropdown>
                 </div>
-                <h3>Editable</h3>
-                <p-dropdown [options]="cars" [(ngModel)]="selectedCar" [style]="{'width':'150px'}" editable="true" placeholder="Select a Brand"></p-dropdown>
-                <p>Selected Car: {{selectedCar||'none'}}</p>
-                
+
+
+
               </div>
             </div>
 
@@ -323,11 +321,7 @@
                 <div class="col-md-12">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">ที่จอดรถ : </label>
-                    <select formControlName="parking">
-                      <option value="have">มีที่จอดรถ</option>
-                      <option value="nothave">ไม่มีที่จอดรถ</option>
-                      <option value="ontheroad">จอดรถข้างทาง</option>
-                    </select>
+                    <p-dropdown [options]="parkingOpt" [(ngModel)]="parking" [style]="{'width':'150px'}" editable="true" placeholder="เลือกที่จอดรถ"></p-dropdown>
                   </div>
                 </div>
 

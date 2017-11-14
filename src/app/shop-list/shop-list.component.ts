@@ -23,9 +23,9 @@ export class ShopListComponent implements OnInit {
   addShop: FormGroup;
   value: Date;
   // public addData: any;
- 
+
   selectedCar: string;
-  cars;
+  parkingOpt;
   //cars: SelectItem[];
 
   public sendAddShopData: ShopsModel = new ShopsModel();
@@ -33,18 +33,11 @@ export class ShopListComponent implements OnInit {
   constructor(private http: Http, private route: RouteService) {
     this.addShopStructure();
 
-    this.cars = [
-      {label: 'Audi', value: 'Audi'},
-      {label: 'BMW', value: 'BMW'},
-      {label: 'Fiat', value: 'Fiat'},
-      {label: 'Ford', value: 'Ford'},
-      {label: 'Honda', value: 'Honda'},
-      {label: 'Jaguar', value: 'Jaguar'},
-      {label: 'Mercedes', value: 'Mercedes'},
-      {label: 'Renault', value: 'Renault'},
-      {label: 'VW', value: 'VW'},
-      {label: 'Volvo', value: 'Volvo'}
-  ];
+    this.parkingOpt = [
+      { label: 'มีที่จอดรถ', value: 'have' },
+      { label: 'ไม่มีที่จอดรถ', value: 'nothave' },
+      { label: 'จอดรถข้างทาง', value: 'ontheroad' }
+    ];
   }
   addShopStructure() {
     this.addShop = new FormGroup({
@@ -69,8 +62,8 @@ export class ShopListComponent implements OnInit {
     })
   }
 
-  
-  
+
+
   ngOnInit() {
     this.getShoplist();
     this.getShopowner();
@@ -157,7 +150,7 @@ export class ShopListComponent implements OnInit {
 
   }
   editshop(shop) {
-    if(this.isEdit == true){
+    if (this.isEdit == true) {
       this.editing = null;
     }
     this.isEdit = true;
@@ -182,7 +175,7 @@ export class ShopListComponent implements OnInit {
 
     });
   }
- 
+
   seachItem(keyword) {
     let val = keyword;
     // alert("Event : " + keyword);
