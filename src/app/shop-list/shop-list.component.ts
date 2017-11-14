@@ -20,6 +20,7 @@ export class ShopListComponent implements OnInit {
   public showSON = false;
   public shopowner;
   addShop: FormGroup;
+  value: Date;
   // public addData: any;
   public sendAddShopData: ShopsModel = new ShopsModel();
 
