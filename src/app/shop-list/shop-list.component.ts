@@ -11,6 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './shop-list.component.html',
   styleUrls: ['./shop-list.component.css']
 })
+
 export class ShopListComponent implements OnInit {
   public shoplist: Array<ShopsModel> = new Array<ShopsModel>();
   public editing: Array<ShopsModel> = new Array<ShopsModel>();
@@ -22,6 +23,11 @@ export class ShopListComponent implements OnInit {
   public shopowner;
   addShop: FormGroup;
   // public addData: any;
+ 
+  selectedCar: string;
+  cars;
+  //cars: SelectItem[];
+
   public sendAddShopData: ShopsModel = new ShopsModel();
   constructor(private http: Http, private route: RouteService) {
     this.addShopStructure();
