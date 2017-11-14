@@ -10,6 +10,7 @@ import * as firebase from "firebase";
   templateUrl: './shop-list.component.html',
   styleUrls: ['./shop-list.component.css']
 })
+
 export class ShopListComponent implements OnInit {
   public shoplist: Array<ShopsModel> = new Array<ShopsModel>();
   public editing: Array<ShopsModel> = new Array<ShopsModel>();
@@ -24,7 +25,8 @@ export class ShopListComponent implements OnInit {
   // public addData: any;
  
   selectedCar: string;
-  cars: SelectItem[];
+  cars;
+  //cars: SelectItem[];
 
   public sendAddShopData: ShopsModel = new ShopsModel();
 
