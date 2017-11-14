@@ -32,14 +32,11 @@ export class ShopListComponent implements OnInit {
   constructor(private http: Http, private route: RouteService) {
     this.addShopStructure();
 
-<<<<<<< HEAD
     this.parkingOpt = [
       { label: 'มีที่จอดรถ', value: 'have' },
       { label: 'ไม่มีที่จอดรถ', value: 'nothave' },
       { label: 'จอดรถข้างทาง', value: 'ontheroad' }
     ];
-=======
->>>>>>> b8b2b4fa97d8048bd1e5497e87826e77d3893f66
   }
   addShopStructure() {
     this.addShop = new FormGroup({
@@ -60,15 +57,11 @@ export class ShopListComponent implements OnInit {
       instagram: new FormControl(''),
       line: new FormControl(''),
       parking: new FormControl(''),
-      shopowner:new FormControl('')
+      shopowner: new FormControl('')
     })
   }
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> b8b2b4fa97d8048bd1e5497e87826e77d3893f66
   ngOnInit() {
     this.getShoplist();
     this.getShopowner();
@@ -83,10 +76,10 @@ export class ShopListComponent implements OnInit {
 
     });
   }
-  getShopowner(){
+  getShopowner() {
     this.http.get(this.route.route + 'api/users/shopowner').toPromise().then((res) => {
       this.shopowner = res.json();
-      console.log("Shop Owner " ,this.shopowner);
+      console.log("Shop Owner ", this.shopowner);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);
 
@@ -144,7 +137,7 @@ export class ShopListComponent implements OnInit {
           instagram: new FormControl(''),
           line: new FormControl(''),
           parking: new FormControl(''),
-          shopowner:new FormControl('')
+          shopowner: new FormControl('')
         });
         alert("Add Shop Complete !");
         // this.addShopStructure();
@@ -155,12 +148,9 @@ export class ShopListComponent implements OnInit {
 
   }
   editshop(shop) {
-<<<<<<< HEAD
     if (this.isEdit == true) {
       this.editing = null;
     }
-=======
->>>>>>> b8b2b4fa97d8048bd1e5497e87826e77d3893f66
     this.isEdit = true;
     this.isAdd = false;
     this.edittitle = shop.name;
@@ -183,7 +173,6 @@ export class ShopListComponent implements OnInit {
 
     });
   }
-<<<<<<< HEAD
 
   seachItem(keyword) {
     let val = keyword;
@@ -196,8 +185,8 @@ export class ShopListComponent implements OnInit {
     }
     if (val == '') {
       this.getShoplist();
-=======
->>>>>>> b8b2b4fa97d8048bd1e5497e87826e77d3893f66
 
 
+    }
+  }
 }

@@ -19,6 +19,12 @@
     margin-top: -4.8em;
     text-align: -webkit-right;
 }
+#add {
+    margin-top: -66px;
+    text-align: -webkit-right;
+    padding-right: 5px;
+}
+
 
 .card .card-content {
     padding-top: 15px;
@@ -69,6 +75,7 @@
 
 .btnsearch{
     margin-left: -25px;
+    margin-top: -12px;
 }
 
 .ui-inputtext{
