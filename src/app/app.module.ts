@@ -30,7 +30,7 @@ import { AngularFireModule } from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -65,6 +65,7 @@ import { UploadFormComponent } from './uploads/upload-form/upload-form.component
     CalendarModule,
     AngularFireModule.initializeApp(environment.firebase,'Coffee Hub'),
     AngularFireDatabaseModule,
+    BrowserAnimationsModule,
     DropdownModule,
     CalendarModule
   ],

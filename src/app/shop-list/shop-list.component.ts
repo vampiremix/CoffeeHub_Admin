@@ -25,13 +25,18 @@ export class ShopListComponent implements OnInit {
   // public addData: any;
 
   selectedCar: string;
-  cars;
+  parkingOpt;
   //cars: SelectItem[];
 
   public sendAddShopData: ShopsModel = new ShopsModel();
   constructor(private http: Http, private route: RouteService) {
     this.addShopStructure();
 
+    this.parkingOpt = [
+      { label: 'มีที่จอดรถ', value: 'have' },
+      { label: 'ไม่มีที่จอดรถ', value: 'nothave' },
+      { label: 'จอดรถข้างทาง', value: 'ontheroad' }
+    ];
   }
   addShopStructure() {
     this.addShop = new FormGroup({
@@ -145,6 +150,9 @@ export class ShopListComponent implements OnInit {
 
   }
   editshop(shop) {
+    if (this.isEdit == true) {
+      this.editing = null;
+    }
     this.isEdit = true;
     this.isAdd = false;
     this.edittitle = shop.name;
@@ -168,5 +176,19 @@ export class ShopListComponent implements OnInit {
     });
   }
 
+  seachItem(keyword) {
+    let val = keyword;
+    // alert("Event : " + keyword);
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() !== '') {
+      this.shoplist = this.shoplist.filter((item) => {
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+    if (val == '') {
+      this.getShoplist();
 
+
+    }
+  }
 }
