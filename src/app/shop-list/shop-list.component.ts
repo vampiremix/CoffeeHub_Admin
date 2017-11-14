@@ -5,6 +5,7 @@ import { ShopsModel } from 'app/shop-list/shop-list.model';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FileUploadModule } from 'primeng/primeng';
 import { Message } from '../../../node_modules/primeng/components/common/api';
+import { NotificationsComponent } from 'app/notifications/notifications.component';
 
 
 @Component({
@@ -35,7 +36,8 @@ export class ShopListComponent implements OnInit {
   public sendAddShopData: ShopsModel = new ShopsModel();
   constructor(private http: Http,
     private route: RouteService,
-    private fileUploadModule: FileUploadModule
+    private fileUploadModule: FileUploadModule,
+    public notify: NotificationsComponent
   ) {
     this.addShopStructure();
 
@@ -64,7 +66,7 @@ export class ShopListComponent implements OnInit {
       instagram: new FormControl(''),
       line: new FormControl(''),
       parking: new FormControl(''),
-      shopowner: new FormControl('')
+      shopowner: new FormControl(null)
     })
   }
   ngOnInit() {
@@ -124,8 +126,9 @@ export class ShopListComponent implements OnInit {
     this.sendAddShopData.parking = this.addShop.value.parking;
     this.sendAddShopData.createduser = user._id;
     console.log("ADD SHOP : ", this.sendAddShopData);
-    if (this.sendAddShopData.name !== null && this.sendAddShopData.address.address !== null) {
+    if (this.sendAddShopData.name !== null && this.sendAddShopData.address.address !== null && this.sendAddShopData.parking !== null && this.sendAddShopData.parking !== "") {
       this.http.post(this.route.route + 'api/shops', this.sendAddShopData, { headers: token }).toPromise().then((res) => {
+        this.notify.showNotification('top', 'right', 'Add Shop finish.', 2);
         this.getShoplist();
         this.addShop = new FormGroup({
           name: new FormControl(''),
@@ -147,11 +150,9 @@ export class ShopListComponent implements OnInit {
           parking: new FormControl(''),
           shopowner: new FormControl('')
         });
-        alert("Add Shop Complete !");
-        // this.addShopStructure();
       });
     } else {
-      alert("Please fill all data");
+      this.notify.showNotification('top', 'right', 'Please fill all required information.', 4);
     }
 
   }
@@ -166,25 +167,26 @@ export class ShopListComponent implements OnInit {
     this.shopcode = shop.shopcode;
     console.log("SHOP : ", shop);
     this.editing = JSON.parse(JSON.stringify(shop));
-    this.editing.openinghours.open = this.editing.openinghours.open ? new Date(this.editing.openinghours.open) : new Date(2017,1,1,0,0,0);
-    this.editing.openinghours.close = this.editing.openinghours.close ? new Date(this.editing.openinghours.close) : new Date(2017,1,1,0,0,0);
-    console.log("TIME : " , this.editing[0].openinghours.open);
+    this.editing.openinghours.open = this.editing.openinghours.open ? new Date(this.editing.openinghours.open) : new Date();
+    this.editing.openinghours.close = this.editing.openinghours.close ? new Date(this.editing.openinghours.close) : new Date();
+    console.log("TIME : ", this.editing[0].openinghours.open);
   }
   updateData(data) {
     let token = this.route.createAuthorizationHeader();
     let user = JSON.parse(window.localStorage.getItem("user"));
-    data.openinghours.open = new Date(Date.parse(data.openinghours.open));
-    data.openinghours.close = new Date(Date.parse(data.openinghours.close));
+    // data.openinghours.open = new Date(Date.parse(data.openinghours.open));
+    // data.openinghours.close = new Date(Date.parse(data.openinghours.close));
     data.editlog.user = user._id;
     this.http.put(this.route.route + 'api/shops/' + data._id, data, { headers: token }).toPromise().then((res) => {
       // this.shoplist = res.json();
+      this.notify.showNotification('top', 'right', 'Edit Shop information complete.', 2);
       this.getShoplist();
       this.editing = null;
       this.isEdit = false;
       console.log(this.shoplist);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);
-
+      this.notify.showNotification('top', 'right', 'Error on editing shop information : ' + err, 4);
     });
   }
 
@@ -206,13 +208,13 @@ export class ShopListComponent implements OnInit {
 
   onUpload(event) {
     alert("ssssssss");
-    for(let file of event.files) {
-        this.uploadedFiles.push(file);
-        console.log(this.uploadedFiles);
+    for (let file of event.files) {
+      this.uploadedFiles.push(file);
+      console.log(this.uploadedFiles);
     }
 
     this.msgs = [];
-    this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});
-}
+    this.msgs.push({ severity: 'info', summary: 'File Uploaded', detail: '' });
+  }
 
 }

@@ -74,7 +74,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FileUploadModule,
     GrowlModule
   ],
-  providers: [LoginComponent, RouteService],
+  providers: [LoginComponent, RouteService,NotificationsComponent],
   bootstrap: [AppComponent],
   
 })
