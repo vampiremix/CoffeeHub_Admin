@@ -53,7 +53,7 @@
                         <i class="glyphicon glyphicon-envelope"></i> : {{shop.email}}</div>
                       <br>
                       <div *ngIf="shop.phone">
-                        <i class="glyphicon glyphicon-earphone" ></i> : {{shop.phone}}
+                        <i class="glyphicon glyphicon-earphone"></i> : {{shop.phone}}
                       </div>
                       <br>
                     </div>
@@ -124,6 +124,14 @@
             <div class="row">
               <div class="col-md-9">
                 <div class="form-group form-black label-stacked is-empty">
+                  <label class="control-label">เจ้าของร้าน : </label>
+                  <p-dropdown [options]="getshopowner" [(ngModel)]="editing.shopowner" placeholder=" เลือกเจ้าของร้าน " optionLabel="displayName"></p-dropdown>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-9">
+                <div class="form-group form-black label-stacked is-empty">
                   <label class="control-label">ที่จอดรถ : </label>
                   <p-dropdown [options]="parkingOpt" [(ngModel)]="editing.parking" [style]="{'width':'150px'}" editable="true" placeholder="เลือกที่จอดรถ"></p-dropdown>
                 </div>
@@ -138,9 +146,8 @@
                 <div class="form-group">
                   <div class="sub">
 
-                    <label>เวลาเปิดร้าน :</label>
+                    <label>เวลาเปิดร้าน :</label> {{editing.openinghours.open}}
                     <p-calendar [timeOnly]="true" *ngIf="editing.openinghours.open" [(ngModel)]="editing.openinghours.open"></p-calendar>
-
                   </div>
                 </div>
               </div>
@@ -303,17 +310,14 @@
                 <div class="col-md-9">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">เจ้าของร้าน : </label>
-                    <select formControlName="shopowner">
-                      <option value="">ยังไม่มีเจ้าของร้าน</option>
-                      <option *ngFor="let item of shopowner" value="{{item._id}}">{{item.displayName}} ({{item.phone}}) </option>
-                    </select>
+                    <p-dropdown [options]="getshopowner" formControlName="shopowner" placeholder=" เลือกเจ้าของร้าน " optionLabel="displayName"></p-dropdown>
                   </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-9">
-                  <p-dropdown [options]="shopowner" [(ngModel)]="shopowner" placeholder=" เจ้าของร้าน " optionLabel="displayName"></p-dropdown>
+
                 </div>
               </div>
 
@@ -321,7 +325,7 @@
                 <div class="col-md-12">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">ที่จอดรถ : </label>
-                    <p-dropdown [options]="parkingOpt" [(ngModel)]="parking" [style]="{'width':'150px'}" editable="true" placeholder="เลือกที่จอดรถ"></p-dropdown>
+                    <p-dropdown [options]="parkingOpt" formControlName="parking" [style]="{'width':'150px'}" editable="true" placeholder="เลือกที่จอดรถ"></p-dropdown>
                   </div>
                 </div>
 
@@ -332,7 +336,7 @@
                     <div class="sub">
 
                       <label>เวลาเปิดร้าน :</label>
-                      <p-calendar [timeOnly]="true" formControlName="open"></p-calendar>
+                      <p-calendar [timeOnly]="true" dataType="date" formControlName="open"></p-calendar>
 
                     </div>
                   </div>
@@ -342,7 +346,7 @@
                     <div class="sub">
 
                       <label>เวลาปิดร้าน :</label>
-                      <p-calendar [timeOnly]="true" formControlName="close"></p-calendar>
+                      <p-calendar [timeOnly]="true" dataType="date"  formControlName="close"></p-calendar>
                     </div>
                   </div>
                 </div>
