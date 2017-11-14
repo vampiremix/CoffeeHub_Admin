@@ -449,7 +449,11 @@
                 <input type="file" id="exampleInputFile2">
               </div>
 
-
+              <div>
+                <p-growl [value]="msgs"></p-growl>
+                <h3>Basic</h3>
+                <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000"  (onUpload)="onUpload($event)"></p-fileUpload>
+              </div>
 
             </form>
 
