@@ -94,4 +94,19 @@ export class UserComponent implements OnInit {
     });
 
   }
+
+  seachItem(keyword) {
+    let val = keyword;
+    // alert("Event : " + keyword);
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() !== '') {
+      this.userData = this.userData.filter((item) => {
+        return (item.displayName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+    if (val == '') {
+      this.getUserlist();
+
+    }
+  }
 }

@@ -16,7 +16,7 @@
 }
 
 #edit {
-    margin-top: -4.7em;
+    margin-top: -4.8em;
     text-align: -webkit-right;
 }
 
@@ -36,6 +36,7 @@
 
 .sub {
     padding-left: 10px;
+    /* margin-top: -15px; */
 }
 
 ::-webkit-input-placeholder {
@@ -66,3 +67,10 @@
     overflow-x: hidden;
 }
 
+.btnsearch{
+    margin-left: -25px;
+}
+
+.ui-inputtext{
+    width: 50px
+}
