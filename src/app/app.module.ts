@@ -26,7 +26,7 @@ import { CreateShopownerComponent } from './create-shopowner/create-shopowner.co
 import { PromotionComponent } from './promotion/promotion.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 
-import { DataListModule ,CheckboxModule,FileUploadModule,CalendarModule}  from 'primeng/primeng';
+import { DropdownModule,CalendarModule}  from 'primeng/primeng';
 
 
 @NgModule({
@@ -57,7 +57,7 @@ import { DataListModule ,CheckboxModule,FileUploadModule,CalendarModule}  from '
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CheckboxModule,
+    DropdownModule,
     CalendarModule
   ],
   providers: [LoginComponent,RouteService],

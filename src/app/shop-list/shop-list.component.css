@@ -36,6 +36,7 @@
 
 .sub {
     padding-left: 10px;
+    /* margin-top: -15px; */
 }
 
 ::-webkit-input-placeholder {
@@ -68,4 +69,8 @@
 
 .btnsearch{
     margin-left: -25px;
+}
+
+.ui-inputtext{
+    width: 50px
 }
