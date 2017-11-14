@@ -48,9 +48,7 @@ export class UserComponent implements OnInit {
   }
 
   getUserlist() {
-    let token =  this.route.createAuthorizationHeader();
-
-    
+    let token =  this.route.createAuthorizationHeader();  
     this.http.get(this.route.route + 'api/users/',{ headers:token}).toPromise().then((res) => {
       this.userData = res.json();
       console.log(this.userData);
