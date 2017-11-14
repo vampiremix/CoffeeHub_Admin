@@ -23,7 +23,7 @@ export class ShopListComponent implements OnInit {
   public shopowner;
   addShop: FormGroup;
   // public addData: any;
- 
+
   selectedCar: string;
   cars;
   //cars: SelectItem[];
@@ -52,7 +52,7 @@ export class ShopListComponent implements OnInit {
       instagram: new FormControl(''),
       line: new FormControl(''),
       parking: new FormControl(''),
-      shopowner:new FormControl('')
+      shopowner: new FormControl('')
     })
   }
 
@@ -63,7 +63,8 @@ export class ShopListComponent implements OnInit {
   }
 
   getShoplist() {
-    this.http.get(this.route.route + 'api/shops/').toPromise().then((res) => {
+    let token = this.route.createAuthorizationHeader();
+    this.http.get(this.route.route + 'api/shops/', { headers: token }).toPromise().then((res) => {
       this.shoplist = res.json();
       console.log(this.shoplist);
     }).catch((err) => {
@@ -71,10 +72,11 @@ export class ShopListComponent implements OnInit {
 
     });
   }
-  getShopowner(){
-    this.http.get(this.route.route + 'api/users/shopowner').toPromise().then((res) => {
+  getShopowner() {
+    let token = this.route.createAuthorizationHeader();
+    this.http.get(this.route.route + 'api/users/shopowner', { headers: token }).toPromise().then((res) => {
       this.shopowner = res.json();
-      console.log("Shop Owner " ,this.shopowner);
+      console.log("Shop Owner ", this.shopowner);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);
 
@@ -132,7 +134,7 @@ export class ShopListComponent implements OnInit {
           instagram: new FormControl(''),
           line: new FormControl(''),
           parking: new FormControl(''),
-          shopowner:new FormControl('')
+          shopowner: new FormControl('')
         });
         alert("Add Shop Complete !");
         // this.addShopStructure();
