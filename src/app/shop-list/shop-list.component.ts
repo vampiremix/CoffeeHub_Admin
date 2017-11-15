@@ -17,6 +17,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 
 export class ShopListComponent implements OnInit {
+  public loadingCtrl:boolean = true;
   public shoplist: Array<ShopsModel> = new Array<ShopsModel>();
   public editing: ShopsModel = new ShopsModel();
   public isEdit: Boolean = false;
@@ -82,6 +83,7 @@ export class ShopListComponent implements OnInit {
     let token = this.route.createAuthorizationHeader();
     this.http.get(this.route.route + 'api/shops/', { headers: token }).toPromise().then((res) => {
       this.shoplist = res.json();
+      this.loadingCtrl = false;
       console.log(this.shoplist);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);

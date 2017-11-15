@@ -34,6 +34,11 @@
           </div>
           <!-- list Data-->
           <div class="scrollbar">
+              <div class="loader" *ngIf="loadingCtrl">
+                  <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                  </svg>
+                </div>
             <div class="card-content" *ngFor="let shop of shoplist; let i = index;">
               <div class="panel panel-default">
                 <div class="panel-body">
