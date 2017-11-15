@@ -6,6 +6,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { FileUploadModule } from 'primeng/primeng';
 import { Message } from '../../../node_modules/primeng/components/common/api';
 import { NotificationsComponent } from 'app/notifications/notifications.component';
+import { UsersModel } from 'app/user/user.model';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -22,7 +24,8 @@ export class ShopListComponent implements OnInit {
   public shopcode;
   public edittitle;
   public showSON = false;
-  public getshopowner;
+  // public getshopowner: Array<UsersModel> = new Array<UsersModel>();
+  public getshopowner: Array<any> = new Array<any>();
   addShop: FormGroup;
   // public addData: any;
 
@@ -89,11 +92,13 @@ export class ShopListComponent implements OnInit {
     let token = this.route.createAuthorizationHeader();
     this.http.get(this.route.route + 'api/users/shopowner', { headers: token }).toPromise().then((res) => {
       this.getshopowner = res.json();
+      // this.getshopowner.unshift({displayName:"ไม่เลือกเจ้าของร้าน"});
       console.log("Shop Owner ", this.getshopowner);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);
 
     });
+
   }
 
   addShopfn() {
@@ -126,6 +131,9 @@ export class ShopListComponent implements OnInit {
     this.sendAddShopData.parking = this.addShop.value.parking;
     this.sendAddShopData.createduser = user._id;
     console.log("ADD SHOP : ", this.sendAddShopData);
+    if(this.sendAddShopData.shopowner == "ไม่เลือกเจ้าของร้าน"){
+      this.sendAddShopData.shopowner = null;
+    }
     if (this.sendAddShopData.name !== null && this.sendAddShopData.address.address !== null && this.sendAddShopData.parking !== null && this.sendAddShopData.parking !== "") {
       this.http.post(this.route.route + 'api/shops', this.sendAddShopData, { headers: token }).toPromise().then((res) => {
         this.notify.showNotification('top', 'right', 'Add Shop finish.', 2);
@@ -156,7 +164,7 @@ export class ShopListComponent implements OnInit {
     }
 
   }
-  editshop(shop) {
+  editshop(shop,i) {
     if (this.isEdit == true) {
       this.editing = null;
     }
@@ -169,7 +177,7 @@ export class ShopListComponent implements OnInit {
     this.editing = JSON.parse(JSON.stringify(shop));
     this.editing.openinghours.open = this.editing.openinghours.open ? new Date(this.editing.openinghours.open) : new Date();
     this.editing.openinghours.close = this.editing.openinghours.close ? new Date(this.editing.openinghours.close) : new Date();
-    console.log("TIME : ", this.editing[0].openinghours.open);
+    // console.log("TIME : ", this.editing[0].openinghours.open);
   }
   updateData(data) {
     let token = this.route.createAuthorizationHeader();
@@ -177,6 +185,9 @@ export class ShopListComponent implements OnInit {
     // data.openinghours.open = new Date(Date.parse(data.openinghours.open));
     // data.openinghours.close = new Date(Date.parse(data.openinghours.close));
     data.editlog.user = user._id;
+    if(data.shopowner == "ไม่เลือกเจ้าของร้าน"){
+      data.shopowner = null;
+    }
     this.http.put(this.route.route + 'api/shops/' + data._id, data, { headers: token }).toPromise().then((res) => {
       // this.shoplist = res.json();
       this.notify.showNotification('top', 'right', 'Edit Shop information complete.', 2);
