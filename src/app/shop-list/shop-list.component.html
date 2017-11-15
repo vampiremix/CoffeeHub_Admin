@@ -34,15 +34,15 @@
           </div>
           <!-- list Data-->
           <div class="scrollbar">
-              <div class="loader" *ngIf="loadingCtrl">
-                  <svg class="circular" viewBox="25 25 50 50">
-                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-                  </svg>
-                </div>
+            <div class="loader" *ngIf="loadingCtrl">
+              <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+              </svg>
+            </div>
             <div class="card-content" *ngFor="let shop of shoplist; let i = index;">
               <div class="panel panel-default">
                 <div class="panel-body">
-                  <div class="row">
+                  <div class="row row-height" >
                     <div class="col-xs-3 col-md-3" *ngIf="shop.image[0];">
                       <img [src]="shop.image[0]" class="logo-size" alt="...">
                     </div>
@@ -50,17 +50,14 @@
                       <img class="logo-size" src="./assets/img/NoCoffe.gif" />
                     </div>
                     <div class="col-md-9">
-                      ชื่อร้าน : {{shop.name}}
-                      <br>
-                      <div *ngIf="shop.shopowner">เจ้าของร้าน : {{shop.shopowner.displayName}} ({{shop.shopowner.phone}})</div>
-                      <br>
+                      <h5>ชื่อร้าน : {{shop.name}}</h5>
+                      <div *ngIf="shop.shopowner"><h5>เจ้าของร้าน : {{shop.shopowner.displayName}} ({{shop.shopowner.phone}})</h5></div>
                       <div *ngIf="shop.email">
-                        <i class="glyphicon glyphicon-envelope"></i> : {{shop.email}}</div>
-                      <br>
-                      <div *ngIf="shop.phone">
-                        <i class="glyphicon glyphicon-earphone"></i> : {{shop.phone}}
+                        <h5><i class="material-icons text-danger">email</i> : {{shop.email}}</h5>
                       </div>
-                      <br>
+                      <div *ngIf="shop.phone">
+                        <h5><i class="material-icons text-danger">perm_phone_msg</i> : {{shop.phone}}</h5>
+                      </div>
                     </div>
                   </div>
                   <div class="row">
@@ -270,7 +267,7 @@
 
 
               <p-accordion [multiple]="true">
-                <p-accordionTab header="ข้อมูลร้าน"  [selected]="true">
+                <p-accordionTab header="ข้อมูลร้าน" [selected]="true">
                   <div class="row">
                     <div class="col-md-8">
                       <div class="form-group form-black label-stacked is-empty">

@@ -32,7 +32,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+// import {Message} from 'primeng/components/common/api';
+import {MessageService} from 'primeng/components/common/messageservice';
 
 
 @NgModule({
@@ -73,9 +74,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CalendarModule,
     FileUploadModule,
     GrowlModule,
-    AccordionModule
+    AccordionModule,
+
   ],
-  providers: [LoginComponent, RouteService,NotificationsComponent],
+  providers: [LoginComponent, RouteService,NotificationsComponent,MessageService],
   bootstrap: [AppComponent],
   
 })
