@@ -5,7 +5,7 @@
         <div class="card">
 
             <div class="card-header" data-background-color="red">
-                <h4>รายการ ร้านกาแฟ</h4>
+                <h4>รายชื่อผู้ใช้งาน</h4>
                 
                 <!-- <form class="navbar-form " role="search" [> -->
                 <div class="row">
@@ -26,14 +26,21 @@
     
               </div>
 
-          <div class="scrooll">
-            <div class="user">
-              <div class="card" *ngFor="let item of userData" (click)="getDetailUser(item)">
+         
+
+      <div class="scrollbar">
+          <div class="card-content" *ngFor="let item of userData; let i = index;">
+            <div class="panel panel-default">
+              <div class="panel-body">
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-4" *ngIf="item.profileImageURL;">
                     <!-- <img class="img" src="../assets/img/faces/marc.jpg" /> -->
                     <img [src]="item.profileImageURL" alt="">
                   </div>
+                  <div class="col-md-4" *ngIf="!item.profileImageURL;">
+                    <img class="img" src="./assets/img/user1.png" />
+                  </div>
+
                   <div class="col-md-7">
                     <div class="row">
                       <p class="name">{{item.displayName}}</p>
@@ -46,12 +53,22 @@
                       <i class="material-icons text-danger">email</i>
                       <a href="#pablo">{{item.email}}</a>
                     </div>
+                    
                   </div>
+
+                  <div class="row">
+                      <div class="col-md-12" id="edit">
+                        <button type="submit"  (click)="getDetailUser(item)" class="btn btn-white btn-round btn-just-icon bg-edit" id="bg-edit">
+                          <i class="glyphicon glyphicon-pencil"></i>
+                          <div class="ripple-container"></div>
+                        </button>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div></div>
       </div>
       
       <div class="col-md-7" *ngIf="edit1.username">

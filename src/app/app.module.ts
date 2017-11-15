@@ -26,7 +26,7 @@ import { RouteService } from 'app/route.service';
 import { CreateShopownerComponent } from './create-shopowner/create-shopowner.component';
 import { PromotionComponent } from './promotion/promotion.component';
 
-import { DataListModule, CheckboxModule, FileUploadModule, CalendarModule, DropdownModule,GrowlModule } from 'primeng/primeng';
+import { DataListModule, CheckboxModule, FileUploadModule, CalendarModule, DropdownModule,GrowlModule ,AccordionModule } from 'primeng/primeng';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
@@ -72,7 +72,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DropdownModule,
     CalendarModule,
     FileUploadModule,
-    GrowlModule
+    GrowlModule,
+    AccordionModule
   ],
   providers: [LoginComponent, RouteService,NotificationsComponent],
   bootstrap: [AppComponent],
