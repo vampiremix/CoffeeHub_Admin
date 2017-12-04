@@ -1,77 +1,83 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-6">
         <div class="card">
 
-            <div class="card-header" data-background-color="red">
-                <h4>รายชื่อผู้ใช้งาน</h4>
-                
-                <!-- <form class="navbar-form " role="search" [> -->
-                <div class="row">
-                  <div class="col-xs-6 col-sm-6 col-md-offset-2 col-xs-offset-2">
-                    <div class="form-group form-black is-empty">
-                      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="keyword" (keyup.enter)="seachItem(keyword)">
-                      <span class="material-input"></span>
-                    </div>
-                  </div>
-                  <div class="col-xs-2 col-sm-2 btnsearch">
-                    <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="seachItem(keyword)">
-                      <i class="material-icons">search</i>
-                      <div class="ripple-container"></div>
-                    </button>
-                  </div>
+          <div class="card-header" data-background-color="red">
+            <h4>รายชื่อผู้ใช้งาน</h4>
+
+            <!-- <form class="navbar-form " role="search" [> -->
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-offset-2 col-xs-offset-2">
+                <div class="form-group form-black is-empty">
+                  <input type="text" class="form-control" placeholder="Search" [(ngModel)]="keyword" (keyup.enter)="seachItem(keyword)">
+                  <span class="material-input"></span>
                 </div>
-                <!-- </form> -->
-    
               </div>
+              <div class="col-xs-2 col-sm-2 btnsearch">
+                <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="seachItem(keyword)">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </div>
+            <!-- </form> -->
 
-         
+          </div>
 
-      <div class="scrollbar">
-          <div class="card-content" *ngFor="let item of userData; let i = index;">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-4" *ngIf="item.profileImageURL;">
-                    <!-- <img class="img" src="../assets/img/faces/marc.jpg" /> -->
-                    <img [src]="item.profileImageURL" alt="">
-                  </div>
-                  <div class="col-md-4" *ngIf="!item.profileImageURL;">
-                    <img class="img" src="./assets/img/user1.png" />
-                  </div>
 
-                  <div class="col-md-7">
-                    <div class="row">
-                      <p class="name">{{item.displayName}}</p>
-                    </div>
-                    <div class="row">
-                      <i class="material-icons text-danger">perm_phone_msg</i>
-                      <a href="#pablo">{{item.phone}}</a>
-                    </div>
-                    <div class="row">
-                      <i class="material-icons text-danger">email</i>
-                      <a href="#pablo">{{item.email}}</a>
-                    </div>
-                    
-                  </div>
 
+          <div class="scrollbar">
+              <div class="loader" *ngIf="loadingCtrl">
+                  <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                  </svg>
+                </div>
+            <div class="card-content" *ngFor="let item of userData; let i = index;">
+              <div class="panel panel-default">
+                <div class="panel-body">
                   <div class="row">
+                    <div class="col-md-4" *ngIf="item.profileImageURL;">
+                      <!-- <img class="img" src="../assets/img/faces/marc.jpg" /> -->
+                      <img [src]="item.profileImageURL" alt="">
+                    </div>
+                    <div class="col-md-4" *ngIf="!item.profileImageURL;">
+                      <img class="img" src="./assets/img/nophoto.gif" />
+                    </div>
+
+                    <div class="col-md-7">
+                      <div class="row">
+                        <p class="name">{{item.displayName}}</p>
+                      </div>
+                      <div class="row">
+                        <i class="material-icons text-danger">perm_phone_msg</i>
+                        <a href="#pablo">{{item.phone}}</a>
+                      </div>
+                      <div class="row">
+                        <i class="material-icons text-danger">email</i>
+                        <a href="#pablo">{{item.email}}</a>
+                      </div>
+
+                    </div>
+
+                    <div class="row">
                       <div class="col-md-12" id="edit">
-                        <button type="submit"  (click)="getDetailUser(item)" class="btn btn-white btn-round btn-just-icon bg-edit" id="bg-edit">
+                        <button type="submit" (click)="getDetailUser(item)" class="btn btn-white btn-round btn-just-icon bg-edit" id="bg-edit">
                           <i class="glyphicon glyphicon-pencil"></i>
                           <div class="ripple-container"></div>
                         </button>
                       </div>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div></div>
+        </div>
       </div>
-      
-      <div class="col-md-7" *ngIf="edit1.username">
+
+      <div class="col-md-6" *ngIf="edit1.username">
         <div class="card">
           <div class="card-header" data-background-color="red">
             <h4 class="title">Edit Profile</h4>
@@ -89,9 +95,9 @@
                         <img class="img" src="../assets/img/faces/marc.jpg" />
                       </a>
                     </div>
-                    <div class="content" >
+                    <div class="content">
                       <h6 class="category text-gray">{{edit1.roles}}</h6>
-                      <h4 class="card-title" >{{edit1.displayName}}</h4>
+                      <h4 class="card-title">{{edit1.displayName}}</h4>
                     </div>
                   </div>
                 </div>
@@ -104,7 +110,7 @@
                 <div class="col-xs-6">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">Username</label>
-                    <input type="text" class="form-control"  formControlName="username">
+                    <input type="text" class="form-control" formControlName="username">
                   </div>
                 </div>
                 <div class="col-xs-3">
@@ -116,7 +122,7 @@
                 <div class="col-xs-6">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">First name</label>
-                    <input type="text" class="form-control"  formControlName="firstName">
+                    <input type="text" class="form-control" formControlName="firstName">
                   </div>
                 </div>
                 <div class="col-xs-3">
@@ -128,7 +134,7 @@
                 <div class="col-xs-6">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">Last name</label>
-                    <input type="text" class="form-control"  formControlName="lastName">
+                    <input type="text" class="form-control" formControlName="lastName">
                   </div>
                 </div>
                 <div class="col-xs-3">
@@ -140,7 +146,7 @@
                 <div class="col-xs-6">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">Email</label>
-                    <input type="text" class="form-control"  formControlName="email">
+                    <input type="text" class="form-control" formControlName="email">
                   </div>
                 </div>
                 <div class="col-xs-3">
@@ -152,7 +158,7 @@
                 <div class="col-xs-6">
                   <div class="form-group form-black label-stacked is-empty">
                     <label class="control-label">Phone</label>
-                    <input type="text" class="form-control"  formControlName="phone">
+                    <input type="text" class="form-control" formControlName="phone">
                   </div>
                 </div>
                 <div class="col-xs-3">

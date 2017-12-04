@@ -15,7 +15,7 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  public loadingCtrl: boolean = true;
   headers = new Headers({
     'Content-Type': 'application/json'
   });
@@ -48,9 +48,10 @@ export class UserComponent implements OnInit {
   }
 
   getUserlist() {
-    let token =  this.route.createAuthorizationHeader();  
-    this.http.get(this.route.route + 'api/users/',{ headers:token}).toPromise().then((res) => {
+    let token = this.route.createAuthorizationHeader();
+    this.http.get(this.route.route + 'api/users/', { headers: token }).toPromise().then((res) => {
       this.userData = res.json();
+      this.loadingCtrl = false;
       console.log(this.userData);
     }).catch((err) => {
       console.log("Cannot get shop list :", err);
@@ -76,16 +77,16 @@ export class UserComponent implements OnInit {
     alert(userdata);
   }
   updateData() {
-    let token =  this.route.createAuthorizationHeader();
-    
+    let token = this.route.createAuthorizationHeader();
+
     this.edit1.username = this.login.value.username;
     this.edit1.firstName = this.login.value.firstName;
     this.edit1.lastName = this.login.value.lastName,
-    this.edit1.email = this.login.value.email,
-    this.edit1.phone = this.login.value.phone,
-    alert(JSON.stringify(this.edit1));
+      this.edit1.email = this.login.value.email,
+      this.edit1.phone = this.login.value.phone,
+      alert(JSON.stringify(this.edit1));
 
-    this.http.put(this.route.route + 'api/users/' + this.edit1._id, this.edit1, { headers:token}).toPromise().then((res) => {
+    this.http.put(this.route.route + 'api/users/' + this.edit1._id, this.edit1, { headers: token }).toPromise().then((res) => {
       // this.userData = res.json();
       console.log(this.userData);
       this.getUserlist();
